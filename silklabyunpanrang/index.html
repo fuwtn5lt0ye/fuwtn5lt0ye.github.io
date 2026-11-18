@@ -1,0 +1,1023 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SilkLab云盘 - 云端存储与影像分享 - 让每一份记忆安全流动</title>
+<meta name="description" content="SilkLab云盘官方网站，专注云端存储与影像分享的创新品牌，为创作者与企业提供高清素材管理、内容生态与社区陪伴，值得信赖的品质之选。">
+<style>
+:root{
+  --bg:#0e1116;
+  --panel:#161b22;
+  --panel2:#1c232d;
+  --line:#2a3340;
+  --text:#e6edf3;
+  --muted:#8b98a8;
+  --accent:#3ddc97;
+  --accent2:#5aa9ff;
+  --glow:rgba(61,220,151,.18);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:112px}
+body{
+  font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+/* 吸顶：公告条 + 页头 */
+.sticky-top{position:sticky;top:0;z-index:100}
+.announce{
+  background:linear-gradient(90deg,#123c2d,#0d2b3f);
+  border-bottom:1px solid var(--line);
+  font-size:13px;color:#b9f5d8;
+}
+.announce .wrap{display:flex;align-items:center;gap:12px;padding:9px 24px;overflow:hidden}
+.announce .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--glow);flex:none;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.announce .marq{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.announce .tag{background:var(--accent);color:#06231a;border-radius:4px;padding:1px 8px;font-weight:700;font-size:12px;flex:none}
+
+header.site{
+  background:rgba(14,17,22,.92);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.nav{display:flex;align-items:center;gap:20px;padding:12px 0}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;letter-spacing:.5px;flex:none}
+.logo .mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;color:#06231a;font-size:17px;font-weight:900}
+.logo small{display:block;font-size:10px;color:var(--muted);font-weight:500;letter-spacing:2px}
+.menu{display:flex;gap:4px;margin-left:8px;flex:1;flex-wrap:wrap}
+.menu a{padding:8px 13px;border-radius:8px;font-size:14px;color:#c3ccd8;transition:.2s}
+.menu a:hover{background:var(--panel2);color:var(--accent)}
+.search{display:flex;align-items:center;gap:0;background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden;transition:.2s;flex:none}
+.search:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px var(--glow)}
+.search input{background:transparent;border:0;outline:0;color:var(--text);padding:9px 12px;width:190px;font-size:13px}
+.search input::placeholder{color:#5f6b7a}
+.search button{background:var(--accent);border:0;color:#06231a;font-weight:700;padding:0 14px;align-self:stretch;font-size:13px}
+.burger{display:none;background:var(--panel);border:1px solid var(--line);color:var(--text);border-radius:8px;padding:8px 12px;font-size:18px;line-height:1}
+.feedback{font-size:12px;color:var(--accent);padding:0 24px 8px;display:none}
+.feedback.on{display:block}
+
+/* 首屏 */
+.hero{position:relative;padding:70px 0 60px;overflow:hidden}
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 12% 18%,rgba(61,220,151,.16),transparent 42%),
+             radial-gradient(circle at 88% 8%,rgba(90,169,255,.15),transparent 44%);
+  pointer-events:none;
+}
+.hero-grid{display:grid;grid-template-columns:6fr 4fr;gap:48px;align-items:center;position:relative}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:12px;color:var(--accent);margin-bottom:20px}
+h1{font-size:clamp(32px,4.6vw,52px);line-height:1.18;font-weight:900;letter-spacing:-1px;margin-bottom:20px}
+h1 .hl{background:linear-gradient(120deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{color:#b3bfcd;font-size:15.5px;margin-bottom:14px}
+.hero p.intro{color:var(--muted);font-size:14px;margin-bottom:26px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:34px}
+.btn{padding:11px 22px;border-radius:10px;font-size:14px;font-weight:700;border:1px solid transparent;transition:.2s;display:inline-flex;align-items:center;gap:8px}
+.btn-main{background:linear-gradient(135deg,var(--accent),#2fbf85);color:#06231a}
+.btn-main:hover{transform:translateY(-2px);box-shadow:0 10px 24px var(--glow)}
+.btn-ghost{background:transparent;border-color:var(--line);color:var(--text)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.stats{display:flex;gap:34px;flex-wrap:wrap}
+.stat b{display:block;font-size:26px;color:var(--accent);font-weight:900;line-height:1.2}
+.stat span{font-size:12px;color:var(--muted)}
+.hero-visual{position:relative}
+.hero-visual .frame{border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:0 24px 60px rgba(0,0,0,.55)}
+.hero-visual .float{position:absolute;bottom:-18px;left:-18px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 16px;font-size:12px;color:var(--muted);display:flex;align-items:center;gap:8px}
+.hero-visual .float b{color:var(--accent2)}
+
+/* 通用 section */
+section{padding:66px 0;border-top:1px solid rgba(42,51,64,.55)}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:32px;flex-wrap:wrap}
+.sec-head h2{font-size:26px;font-weight:800;letter-spacing:-.5px;position:relative;padding-left:16px}
+.sec-head h2::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:4px;border-radius:2px;background:linear-gradient(var(--accent),var(--accent2))}
+.sec-head p{color:var(--muted);font-size:13.5px;max-width:520px}
+
+/* 焦点 */
+.focus-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:24px}
+.feat-card{border-radius:16px;overflow:hidden;border:1px solid var(--line);background:var(--panel);position:relative;transition:.25s}
+.feat-card:hover{transform:translateY(-4px);border-color:#38505f}
+.feat-card .cover{position:relative;aspect-ratio:16/9;overflow:hidden}
+.feat-card .cover img{width:100%;height:100%;object-fit:cover}
+.feat-card .cover::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,13,18,.85),transparent 55%)}
+.feat-card .body{padding:18px 20px 20px}
+.feat-card h3{font-size:17px;margin-bottom:8px}
+.feat-card p{font-size:13px;color:var(--muted);margin-bottom:12px}
+.play{position:absolute;inset:0;display:grid;place-items:center;z-index:2}
+.play i{width:54px;height:54px;border-radius:50%;background:rgba(61,220,151,.92);display:grid;place-items:center;color:#06231a;font-style:normal;font-size:18px;box-shadow:0 8px 24px rgba(0,0,0,.4);transition:.2s}
+.feat-card:hover .play i{transform:scale(1.1)}
+.badge{position:absolute;top:12px;left:12px;z-index:3;background:rgba(6,35,26,.88);color:var(--accent);border:1px solid rgba(61,220,151,.4);font-size:11px;padding:3px 9px;border-radius:6px;font-weight:700}
+.meta{display:flex;gap:14px;font-size:12px;color:#7b8798;flex-wrap:wrap}
+.side-list{display:flex;flex-direction:column;gap:16px}
+.mini{display:flex;gap:14px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px;transition:.2s;align-items:center}
+.mini:hover{border-color:#38505f;transform:translateX(4px)}
+.mini .thumb{width:118px;aspect-ratio:16/9;border-radius:8px;overflow:hidden;flex:none}
+.mini .thumb img{width:100%;height:100%;object-fit:cover}
+.mini h4{font-size:13.5px;margin-bottom:4px}
+.mini span{font-size:11.5px;color:var(--muted)}
+
+/* 视频流 */
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
+.chip{background:var(--panel);border:1px solid var(--line);color:#b3bfcd;border-radius:999px;padding:6px 16px;font-size:13px;transition:.2s}
+.chip:hover,.chip.active{border-color:var(--accent);color:var(--accent);background:rgba(61,220,151,.08)}
+.v-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.v-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:.25s;display:flex;flex-direction:column}
+.v-card:hover{transform:translateY(-5px);border-color:#38505f;box-shadow:0 18px 40px rgba(0,0,0,.35)}
+.v-card .cover{position:relative;aspect-ratio:16/9;overflow:hidden}
+.v-card .cover img{width:100%;height:100%;object-fit:cover;transition:.4s}
+.v-card:hover .cover img{transform:scale(1.05)}
+.v-card .cover::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,13,18,.7),transparent 60%)}
+.v-card .tb{position:absolute;top:10px;left:10px;z-index:2;font-size:11px;background:rgba(10,13,18,.75);color:var(--accent2);border:1px solid rgba(90,169,255,.35);padding:2px 8px;border-radius:5px}
+.v-card .dur{position:absolute;bottom:10px;right:10px;z-index:2;font-size:11px;background:rgba(0,0,0,.7);padding:2px 7px;border-radius:4px;color:#d6e0ea}
+.v-card .body{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1}
+.v-card h3{font-size:15px;margin-bottom:7px;line-height:1.5}
+.v-card .desc{font-size:12.5px;color:var(--muted);margin-bottom:12px;flex:1}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.tags span{font-size:11px;color:#8fb8ff;background:rgba(90,169,255,.1);border-radius:4px;padding:2px 7px}
+.author-row{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.avatar{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:800;color:#06121a;flex:none}
+.author-row .nm{font-size:12px;color:#b3bfcd}
+.author-row .dt{font-size:11px;color:#5f6b7a;margin-left:auto}
+.actions{display:flex;gap:8px;border-top:1px solid var(--line);padding-top:11px}
+.act{background:transparent;border:1px solid var(--line);color:#9aa7b6;border-radius:7px;padding:5px 10px;font-size:12px;display:inline-flex;align-items:center;gap:5px;transition:.2s}
+.act:hover{border-color:var(--accent2);color:var(--accent2)}
+.act.liked{color:var(--accent);border-color:rgba(61,220,151,.5);background:rgba(61,220,151,.08)}
+.act.faved{color:#ff7b9c;border-color:rgba(255,123,156,.5);background:rgba(255,123,156,.08)}
+
+/* 专题 */
+.topic-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.topic{border-radius:14px;overflow:hidden;position:relative;border:1px solid var(--line);transition:.25s;background:var(--panel)}
+.topic:hover{transform:translateY(-5px);border-color:#38505f}
+.topic .cover{aspect-ratio:4/5;overflow:hidden}
+.topic .cover img{width:100%;height:100%;object-fit:cover}
+.topic .ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,13,18,.95) 12%,rgba(10,13,18,.15) 62%);display:flex;flex-direction:column;justify-content:flex-end;padding:18px}
+.topic h3{font-size:15.5px;margin-bottom:6px}
+.topic p{font-size:12px;color:#a9b6c4;margin-bottom:9px}
+.topic .st{font-size:11px;color:var(--accent);font-weight:700}
+
+/* 创作者 */
+.creator-scroll{display:flex;gap:20px;overflow-x:auto;padding-bottom:14px;scrollbar-width:thin}
+.creator-scroll::-webkit-scrollbar{height:6px}
+.creator-scroll::-webkit-scrollbar-thumb{background:var(--line);border-radius:3px}
+.creator{min-width:280px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px;transition:.25s}
+.creator:hover{border-color:#38505f;transform:translateY(-4px)}
+.creator .top{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.creator .top .avatar{width:48px;height:48px;font-size:19px;border-radius:14px}
+.creator h3{font-size:15.5px;margin-bottom:2px}
+.creator .field{font-size:11.5px;color:var(--accent2)}
+.creator p{font-size:12.5px;color:var(--muted);margin-bottom:14px;min-height:56px}
+.creator .nums{display:flex;gap:18px;font-size:11.5px;color:#7b8798;border-top:1px solid var(--line);padding-top:12px;margin-bottom:12px}
+.creator .nums b{color:var(--text);font-size:14px;display:block}
+.creator .more{width:100%;background:transparent;border:1px solid var(--line);color:#b3bfcd;border-radius:8px;padding:7px;font-size:12.5px;transition:.2s}
+.creator .more:hover{border-color:var(--accent);color:var(--accent)}
+
+/* 评论 */
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.review{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px;position:relative;transition:.2s}
+.review:hover{border-color:#38505f}
+.review .quote{color:var(--accent);font-size:22px;line-height:1;margin-bottom:8px}
+.review p{font-size:12.8px;color:#b3bfcd;margin-bottom:14px}
+.review .who{display:flex;align-items:center;gap:9px;font-size:12px;color:var(--muted)}
+.review .who .avatar{width:28px;height:28px;font-size:11px}
+
+/* 品牌故事双栏 */
+.story{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.story h2{font-size:24px;margin-bottom:16px;padding-left:0}
+.story h2::before{display:none}
+.story p{font-size:13.5px;color:#b3bfcd;margin-bottom:13px}
+.story .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+.story .kpi{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px;text-align:center}
+.story .kpi b{display:block;color:var(--accent);font-size:20px}
+.story .kpi span{font-size:11px;color:var(--muted)}
+.story .pic{border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.story .pic img{width:100%;aspect-ratio:4/3;object-fit:cover}
+
+/* 灵感工具 */
+.tools{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tool{background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:22px;transition:.25s}
+.tool:hover{transform:translateY(-4px);border-color:rgba(90,169,255,.4)}
+.tool .ic{width:42px;height:42px;border-radius:11px;background:rgba(61,220,151,.12);display:grid;place-items:center;font-size:19px;margin-bottom:14px}
+.tool h3{font-size:15px;margin-bottom:7px}
+.tool p{font-size:12.5px;color:var(--muted);margin-bottom:14px}
+.tool button{background:transparent;border:1px solid var(--line);color:var(--accent);border-radius:8px;padding:6px 14px;font-size:12.5px;transition:.2s}
+.tool button:hover{background:var(--accent);color:#06231a;border-color:var(--accent)}
+
+/* FAQ */
+.faq-list{max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+details{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden;transition:.2s}
+details:hover{border-color:#38505f}
+details[open]{border-color:rgba(61,220,151,.4)}
+summary{padding:15px 20px;font-size:14px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:14px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--accent);font-size:18px;font-weight:400;flex:none}
+details[open] summary::after{content:"−"}
+details .ans{padding:0 20px 16px;font-size:13px;color:var(--muted);line-height:1.8}
+
+/* 动态 */
+.timeline{display:flex;flex-direction:column;gap:0;border-left:2px solid var(--line);margin-left:8px;max-width:860px}
+.tl-item{position:relative;padding:0 0 26px 28px}
+.tl-item::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--accent)}
+.tl-item time{font-size:11.5px;color:var(--accent2);letter-spacing:.5px}
+.tl-item h3{font-size:14.5px;margin:5px 0 4px}
+.tl-item p{font-size:12.5px;color:var(--muted)}
+
+/* 联系 */
+.contact-box{background:linear-gradient(135deg,#152420,#101a2b);border:1px solid var(--line);border-radius:18px;padding:40px;display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
+.contact-box h2{font-size:24px;margin-bottom:14px}
+.contact-box p{font-size:13.5px;color:#a9b6c4;margin-bottom:18px}
+.contact-list{display:flex;flex-direction:column;gap:10px;font-size:13px;color:#b3bfcd}
+.contact-list div{display:flex;gap:10px;align-items:center}
+.contact-list b{color:var(--accent);font-weight:600}
+.contact-btns{display:flex;gap:12px;flex-wrap:wrap}
+
+/* footer */
+footer{background:#0a0d12;border-top:1px solid var(--line);padding:48px 0 28px;margin-top:20px}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:34px;margin-bottom:34px}
+.foot-grid h4{font-size:13px;color:#e6edf3;margin-bottom:14px;letter-spacing:.5px}
+.foot-grid a,.foot-grid p{display:block;font-size:12.5px;color:#7b8798;margin-bottom:9px;transition:.2s}
+.foot-grid a:hover{color:var(--accent)}
+.foot-brand p{max-width:320px;line-height:1.8}
+.foot-bottom{border-top:1px solid var(--line);padding-top:20px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12px;color:#5f6b7a}
+
+/* toast / modal */
+#toast{position:fixed;bottom:28px;left:50%;transform:translate(-50%,20px);background:var(--accent);color:#06231a;font-weight:700;font-size:13.5px;padding:11px 24px;border-radius:10px;opacity:0;pointer-events:none;transition:.3s;z-index:999;box-shadow:0 12px 30px rgba(0,0,0,.4)}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+.modal-mask{position:fixed;inset:0;background:rgba(5,8,12,.78);display:none;place-items:center;z-index:500;padding:20px;backdrop-filter:blur(4px)}
+.modal-mask.on{display:grid}
+.modal{background:var(--panel);border:1px solid var(--line);border-radius:16px;max-width:460px;width:100%;padding:28px;position:relative;animation:pop .25s ease}
+@keyframes pop{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
+.modal h3{font-size:18px;margin-bottom:14px}
+.modal p{font-size:13px;color:var(--muted);margin-bottom:18px}
+.modal .close{position:absolute;top:14px;right:16px;background:transparent;border:0;color:var(--muted);font-size:20px;line-height:1}
+.modal .close:hover{color:var(--accent)}
+.modal input,.modal textarea{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:10px 13px;color:var(--text);font-size:13px;outline:0;margin-bottom:12px;font-family:inherit}
+.modal input:focus,.modal textarea:focus{border-color:var(--accent)}
+.modal textarea{min-height:88px;resize:vertical}
+
+#toTop{position:fixed;right:24px;bottom:28px;width:44px;height:44px;border-radius:50%;background:var(--panel);border:1px solid var(--line);color:var(--accent);font-size:18px;display:none;place-items:center;z-index:90;transition:.2s}
+#toTop:hover{background:var(--accent);color:#06231a}
+#toTop.on{display:grid}
+
+@media(max-width:980px){
+  .hero-grid{grid-template-columns:1fr;gap:34px}
+  .focus-grid{grid-template-columns:1fr}
+  .v-grid{grid-template-columns:repeat(2,1fr)}
+  .topic-grid{grid-template-columns:repeat(2,1fr)}
+  .reviews{grid-template-columns:repeat(2,1fr)}
+  .tools{grid-template-columns:1fr}
+  .story{grid-template-columns:1fr}
+  .contact-box{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:760px){
+  .menu{display:none;position:absolute;top:100%;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);padding:12px 24px;flex-direction:column;gap:4px}
+  .menu.open{display:flex}
+  .burger{display:block}
+  .search input{width:120px}
+  .v-grid{grid-template-columns:1fr}
+  .topic-grid{grid-template-columns:1fr}
+  .reviews{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .stats{gap:22px}
+  .hero{padding:48px 0 40px}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<div class="sticky-top">
+  <div class="announce">
+    <div class="wrap">
+      <span class="dot"></span>
+      <span class="tag">更新</span>
+      <span class="marq">SilkLab 3.2 版本上线：新增影像素材智能分类与多人协作空间，原创内容频道「城市切片」本周更新 12 条影像记录。</span>
+    </div>
+  </div>
+  <header class="site">
+    <div class="wrap nav">
+      <a href="#top" class="logo">
+        <span class="mark">S</span>
+        <span>SilkLab<small>CLOUD VIDEO</small></span>
+      </a>
+      <nav class="menu" id="menu">
+        <a href="#hero">首页</a>
+        <a href="#focus">影像焦点</a>
+        <a href="#videos">热门内容</a>
+        <a href="#topics">专题企划</a>
+        <a href="#creators">创作者</a>
+        <a href="#story">品牌故事</a>
+        <a href="#faq">帮助</a>
+        <a href="#contact">联系</a>
+      </nav>
+      <form class="search" id="searchForm" onsubmit="return false;">
+        <input type="text" id="searchInput" placeholder="搜索影像 / 素材 / 创作者" aria-label="站内搜索">
+        <button type="submit" id="searchBtn">搜索</button>
+      </form>
+      <button class="burger" id="burger" aria-label="展开导航">☰</button>
+    </div>
+    <div class="feedback" id="feedback"></div>
+  </header>
+</div>
+
+<main id="top">
+
+  <!-- 首屏 -->
+  <section class="hero" id="hero" style="border-top:0">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">● SilkLab 官方网站 · 云端影像品牌</span>
+        <h1>SilkLab 云盘<br><span class="hl">让每一帧记忆安全流动</span></h1>
+        <p class="lead">作为持续运营的云端影像与素材管理品牌，SilkLab 云盘为创作者、家庭与企业搭建高品质内容生态：从高清素材归档、多端同步，到社区分享与协作交付，一条链路完成。</p>
+        <p class="intro">我们相信数据不只是文件，而是可以被看见、被讲述、被传承的影像资产。官网提供原创内容频道、创作者社区与官方发布通道，让每一次上传与下载都值得信赖。</p>
+        <div class="hero-btns">
+          <a href="#videos" class="btn btn-main">浏览精品内容 →</a>
+          <a href="#contact" class="btn btn-ghost">开通企业空间</a>
+          <a href="#creators" class="btn btn-ghost">认识创作者</a>
+        </div>
+        <div class="stats">
+          <div class="stat"><b data-count="1280">1280</b><span>万影像文件已归档</span></div>
+          <div class="stat"><b data-count="42">42</b><span>万注册创作者</span></div>
+          <div class="stat"><b data-count="99">99.9%</b><span>服务可用性</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="frame">
+          <img alt="SilkLab云盘多端同步与影像素材库界面主视觉" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 420'><defs><linearGradient id='g1' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%230d2b3f'/><stop offset='1' stop-color='%2312342a'/></linearGradient><linearGradient id='g2' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%233ddc97'/><stop offset='1' stop-color='%235aa9ff'/></linearGradient></defs><rect width='640' height='420' fill='url(%23g1)'/><rect x='36' y='38' width='568' height='46' rx='12' fill='%23141e2a' stroke='%232a3340'/><circle cx='62' cy='61' r='7' fill='%233ddc97'/><circle cx='84' cy='61' r='7' fill='%235aa9ff'/><rect x='112' y='52' width='150' height='10' rx='5' fill='%232a3340'/><rect x='420' y='52' width='160' height='10' rx='5' fill='%232a3340'/><rect x='36' y='104' width='270' height='172' rx='14' fill='%231a2432' stroke='%232a3340'/><path d='M56 240 L120 176 L166 214 L214 152 L286 240 Z' fill='url(%23g2)' opacity='0.55'/><circle cx='96' cy='152' r='16' fill='%23ffd166' opacity='0.8'/><rect x='36' y='292' width='270' height='80' rx='12' fill='%231a2432' stroke='%232a3340'/><rect x='54' y='310' width='98' height='9' rx='4' fill='%233ddc97'/><rect x='54' y='330' width='180' height='8' rx='4' fill='%232a3340'/><rect x='54' y='346' width='140' height='8' rx='4' fill='%232a3340'/><rect x='326' y='104' width='278' height='120' rx='14' fill='%231a2432' stroke='%232a3340'/><rect x='344' y='122' width='80' height='8' rx='4' fill='%235aa9ff'/><rect x='344' y='142' width='220' height='8' rx='4' fill='%232a3340'/><rect x='344' y='158' width='180' height='8' rx='4' fill='%232a3340'/><rect x='326' y='240' width='132' height='132' rx='14' fill='%231a2432' stroke='%232a3340'/><rect x='472' y='240' width='132' height='132' rx='14' fill='%231a2432' stroke='%232a3340'/><circle cx='392' cy='306' r='26' fill='none' stroke='%233ddc97' stroke-width='4'/><path d='M392 292 L392 320 M380 306 L404 306' stroke='%233ddc97' stroke-width='4'/><rect x='492' y='272' width='92' height='8' rx='4' fill='%23ff7b9c'/><rect x='492' y='292' width='66' height='8' rx='4' fill='%232a3340'/><rect x='492' y='312' width='80' height='8' rx='4' fill='%232a3340'/></svg>">
+        </div>
+        <div class="float">实时同步 <b>6 端</b> · 端到端加密</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 影像焦点 -->
+  <section id="focus">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2>影像焦点 · 官方发布</h2>
+          <p>每周由内容编辑团队与行业创作者共同挑选，聚焦云端影像的真实故事与实用价值。</p>
+        </div>
+        <a href="#videos" class="btn btn-ghost" style="font-size:12.5px;padding:8px 16px">查看全部精选</a>
+      </div>
+      <div class="focus-grid">
+        <article class="feat-card">
+          <div class="cover">
+            <span class="badge">本周主推</span>
+            <span class="play"><i>▶</i></span>
+            <img alt="城市切片系列影像封面：夜色中的云端数据流与楼宇" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'><defs><linearGradient id='n1' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='%2308121c'/><stop offset='1' stop-color='%2312283a'/></linearGradient><linearGradient id='n2' x1='0' y1='0' x2='1' y2='0'><stop offset='0' stop-color='%233ddc97'/><stop offset='1' stop-color='%235aa9ff'/></linearGradient></defs><rect width='800' height='450' fill='url(%23n1)'/><g opacity='0.5'><rect x='60' y='250' width='70' height='200' fill='%231e3448'/><rect x='150' y='190' width='90' height='260' fill='%23182b3d'/><rect x='260' y='280' width='60' height='170' fill='%231e3448'/><rect x='340' y='150' width='100' height='300' fill='%23182b3d'/><rect x='460' y='230' width='80' height='220' fill='%231e3448'/><rect x='560' y='180' width='70' height='270' fill='%23182b3d'/><rect x='650' y='260' width='90' height='190' fill='%231e3448'/></g><g stroke='url(%23n2)' stroke-width='2' fill='none' opacity='0.85'><path d='M0 110 Q200 60 400 130 T800 90'/><path d='M0 150 Q220 100 420 170 T800 130'/><path d='M0 70 Q180 30 380 90 T800 50' opacity='0.5'/></g><g fill='%233ddc97'><circle cx='170' cy='205' r='3'/><circle cx='390' cy='140' r='3'/><circle cx='620' cy='195' r='3'/><circle cx='480' cy='120' r='2.5'/></g><g fill='%23ffd166' opacity='0.8'><rect x='163' y='215' width='8' height='8'/><rect x='183' y='235' width='8' height='8'/><rect x='355' y='170' width='8' height='8'/><rect x='580' y='200' width='8' height='8'/></g></svg>">
+          </div>
+          <div class="body">
+            <h3>城市切片 07｜一名独立影像师的云端工作流</h3>
+            <p>从凌晨四点的江边到深夜的剪辑台，看创作者如何用 SilkLab 云盘完成 400GB 素材的跨设备流转与版本管理。</p>
+            <div class="meta"><span>原创影像 · 18:42</span><span>12.6 万次浏览</span><span>更新于 3 天前</span></div>
+          </div>
+        </article>
+        <div class="side-list">
+          <article class="mini">
+            <div class="thumb"><img alt="云端素材智能分类功能演示缩略图" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 180'><rect width='320' height='180' fill='%23121c26'/><circle cx='80' cy='90' r='44' fill='none' stroke='%235aa9ff' stroke-width='3' opacity='0.7'/><circle cx='80' cy='90' r='26' fill='%233ddc97' opacity='0.35'/><rect x='150' y='44' width='130' height='12' rx='6' fill='%232a3340'/><rect x='150' y='70' width='100' height='10' rx='5' fill='%232a3340'/><rect x='150' y='94' width='118' height='10' rx='5' fill='%232a3340'/><rect x='150' y='118' width='84' height='10' rx='5' fill='%232a3340'/><rect x='150' y='142' width='64' height='10' rx='5' fill='%233ddc97' opacity='0.6'/></svg>"></div>
+            <div><h4>教程：三步开启素材智能归档</h4><span>实用技巧 · 06:15</span></div>
+          </article>
+          <article class="mini">
+            <div class="thumb"><img alt="企业团队多人协作审片流程缩略图" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 180'><rect width='320' height='180' fill='%231a1420'/><circle cx='70' cy='90' r='24' fill='%23ff7b9c' opacity='0.7'/><circle cx='120' cy='90' r='24' fill='%23ffd166' opacity='0.7'/><circle cx='170' cy='90' r='24' fill='%233ddc97' opacity='0.7'/><rect x='210' y='66' width='86' height='10' rx='5' fill='%232a3340'/><rect x='210' y='88' width='62' height='10' rx='5' fill='%232a3340'/><rect x='210' y='110' width='74' height='10' rx='5' fill='%232a3340'/></svg>"></div>
+            <div><h4>企业空间：一个链接完成审片</h4><span>品牌故事 · 04:38</span></div>
+          </article>
+          <article class="mini">
+            <div class="thumb"><img alt="家庭影像长期备份与传承访谈缩略图" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 180'><rect width='320' height='180' fill='%231c2418'/><path d='M40 140 L96 84 L140 120 L186 64 L240 126 L280 96 L280 180 L40 180 Z' fill='%233ddc97' opacity='0.45'/><circle cx='238' cy='48' r='18' fill='%23ffd166' opacity='0.75'/><rect x='40' y='24' width='60' height='8' rx='4' fill='%232a3340'/></svg>"></div>
+            <div><h4>访谈：把二十年家庭影像存进云端</h4><span>人物访谈 · 11:02</span></div>
+          </article>
+          <article class="mini">
+            <div class="thumb"><img alt="创作者素材版权保护与正版授权说明缩略图" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 180'><rect width='320' height='180' fill='%23101824'/><rect x='112' y='40' width='96' height='100' rx='12' fill='none' stroke='%235aa9ff' stroke-width='3'/><path d='M160 66 L160 92 M148 80 L172 80' stroke='%233ddc97' stroke-width='4'/><rect x='130' y='108' width='60' height='8' rx='4' fill='%232a3340'/></svg>"></div>
+            <div><h4>正版素材授权与版权保护指南</h4><span>知识科普 · 08:20</span></div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 热门视频流 -->
+  <section id="videos">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2>热门内容 · 社区精选</h2>
+          <p>来自 42 万创作者的多元表达：经验分享、深度测评、城市探索与创作幕后。</p>
+        </div>
+      </div>
+      <div class="chips" id="chips">
+        <button class="chip active" data-cat="all">全部</button>
+        <button class="chip" data-cat="tutorial">教程干货</button>
+        <button class="chip" data-cat="review">深度测评</button>
+        <button class="chip" data-cat="city">城市探索</button>
+        <button class="chip" data-cat="behind">创作幕后</button>
+        <button class="chip" data-cat="life">生活方式</button>
+      </div>
+      <div class="v-grid" id="vGrid">
+
+        <article class="v-card" data-cat="tutorial">
+          <div class="cover">
+            <span class="tb">教程干货</span><span class="dur">09:14</span>
+            <img alt="云端素材整理与命名规范教学封面" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 270'><rect width='480' height='270' fill='%23121c26'/><rect x='30' y='30' width='180' height='120' rx='10' fill='%231e2b3a' stroke='%232a3340'/><rect x='48' y='48' width='70' height='8' rx='4' fill='%233ddc97'/><rect x='48' y='68' width='120' height='7' rx='3' fill='%232a3340'/><rect x='48' y='84' width='100' height='7' rx='3' fill='%232a3340'/><rect x='48' y='100' width='130' height='7' rx='3' fill='%232a3340'/><rect x='48' y='116' width='80' height='7' rx='3' fill='%232a3340'/><rect x='240' y='30' width='210' height='58' rx='10' fill='%235aa9ff' opacity='0.22'/><rect x='240' y='100' width='210' height='50' rx='10' fill='%233ddc97' opacity='0.2'/><rect x='30' y='176' width='240' height='64' rx='10' fill='%231e2b3a'/><rect x='48' y='194' width='90' height='8' rx='4' fill='%23ffd166'/><rect x='48' y='212' width='160' height='7' rx='3' fill='%232a3340'/><rect x='290' y='176' width='160' height='64' rx='10' fill='%231e2b3a'/><path d='M306 220 L336 190 L362 210 L392 182 L434 220 Z' fill='%233ddc97' opacity='0.6'/></svg>">
+          </div>
+          <div class="body">
+            <h3>素材不迷路：建立可检索云端素材库的 5 个步骤</h3>
+            <p class="desc">从命名规则、文件夹层级到标签体系，把一次拍摄的三千条片段变成随时可调用的资产。</p>
+            <div class="tags"><span>#归档</span><span>#命名规范</span></div>
+            <div class="author-row"><span class="avatar" style="background:#3ddc97">林</span><span class="nm">林屿影像</span><span class="dt">2 天前</span></div>
+            <div class="actions">
+              <button class="act like">♡ 2.4k</button>
+              <button class="act fav">☆ 收藏</button>
+              <button class="act comment">💬 评论</button>
+              <button class="act share">↗ 分享</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="v-card" data-cat="review">
+          <div class="cover">
+            <span class="tb">深度测评</span><span class="dur">13:06</span>
+            <img alt="多款云盘传输速度与画质保留对比测评封面" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 270'><rect width='480' height='270' fill='%230e1a24'/><g><rect x='40' y='180' width='44' height='60' rx='6' fill='%235aa9ff' opacity='0.55'/><rect x='100' y='150' width='44' height='90' rx='6' fill='%233ddc97' opacity='0.7'/><rect x='160' y='120' width='44' height='120' rx='6' fill='%23ffd166' opacity='0.65'/><rect x='220' y='90' width='44' height='150' rx='6' fill='%23ff7b9c' opacity='0.6'/></g><path d='M40 100 L110 80 L180 96 L250 56 L320 74 L390 40 L440 58' stroke='%233ddc97' stroke-width='3' fill='none'/><circle cx='390' cy='40' r='6' fill='%233ddc97'/><rect x='290' y='120' width='150' height='120' rx='12' fill='%2314202c' stroke='%232a3340'/><rect x='306' y='140' width='80' height='8' rx='4' fill='%23e6edf3' opacity='0.7'/><rect x='306' y='160' width='112' height='7' rx='3' fill='%232a3340'/><rect x='306' y='178' width='92' height='7' rx='3' fill='%232a3340'/><rect x='306' y='200' width='60' height='14' rx='7' fill='%233ddc97' opacity='0.8'/></svg>">
+          </div>
+          <div class="body">
+            <h3>五款云盘横评：传大文件、保原画，谁更稳？</h3>
+            <p class="desc">用同一批 4K 素材实测上传速度、断点续传与画质压缩策略，给影像工作者一份选择参考。</p>
+            <div class="tags"><span>#4K</span><span>#实测</span></div>
+            <div class="author-row"><span class="avatar" style="background:#5aa9ff">测</span><span class="nm">测评君阿衡</span><span class="dt">4 天前</span></div>
+            <div class="actions">
+              <button class="act like">♡ 1.8k</button>
+              <button class="act fav">☆ 收藏</button>
+              <button class="act comment">💬 评论</button>
+              <button class="act share">↗ 分享</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="v-card" data-cat="city">
+          <div class="cover">
+            <span class="tb">城市探索</span><span class="dur">16:30</span>
+            <img alt="清晨老城街巷与记录者同行的城市影像封面" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 270'><rect width='480' height='270' fill='%231c1a14'/><rect x='0' y='150' width='480' height='120' fill='%23242018'/><g fill='%233a3226'><rect x='30' y='90' width='80' height='90'/><rect x='140' y='60' width='70' height='120'/><rect x='240' y='100' width='90' height='80'/><rect x='360' y='70' width='80' height='110'/></g><g fill='%23ffd166' opacity='0.8'><rect x='46' y='108' width='10' height='12'/><rect x='70' y='108' width='10' height='12'/><rect x='156' y='82' width='10' height='12'/><rect x='180' y='82' width='10' height='12'/><rect x='156' y='108' width='10' height='12'/><rect x='260' y='120' width='10' height='12'/><rect x='286' y='120' width='10' height='12'/><rect x='378' y='90' width='10' height='12'/></g><circle cx='400' cy='46' r='22' fill='%23ffb703' opacity='0.85'/><path d='M0 210 Q120 190 240 210 T480 200' stroke='%235aa9ff' stroke-width='3' fill='none' opacity='0.5'/></svg>">
+          </div>
+          <div class="body">
+            <h3>跟拍一位城市记录者：从街角到云端的 24 小时</h3>
+            <p class="desc">他用一台旧相机记录城市褶皱，也用云端把散落的片段缝成完整叙事。</p>
+            <div class="tags"><span>#城市切片</span><span>#日常记录</span></div>
+            <div class="author-row"><span class="avatar" style="background:#ffd166">片</span><span class="nm">城市切片计划</span><span class="dt">5 天前</span></div>
+            <div class="actions">
+              <button class="act like">♡ 3.1k</button>
+              <button class="act fav">☆ 收藏</button>
+              <button class="act comment">💬 评论</button>
+              <button class="act share">↗ 分享</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="v-card" data-cat="behind">
+          <div class="cover">
+            <span class="tb">创作幕后</span><span class="dur">07:52</span>
+            <img alt="纪录片团队云端协作审片幕后封面" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 270'><rect width='480' height='270' fill='%2314101c'/><rect x='40' y='40' width='200' height='120' rx='10' fill='%23201a2c' stroke='%232a3340'/><circle cx='140' cy='100' r='34' fill='none' stroke='%23ff7b9c' stroke-width='4'/><path d='M130 86 L158 100 L130 114 Z' fill='%23ff7b9c'/><rect x='264' y='40' width='176' height='54' rx='10' fill='%233ddc97' opacity='0.18'/><rect x='264' y='106' width='176' height='54' rx='10' fill='%235aa9ff' opacity='0.18'/><rect x='40' y='180' width='400' height='56' rx='10' fill='%231c1626' stroke='%232a3340'/><g fill='%23e6edf3' opacity='0.55'><rect x='60' y='200' width='120' height='8' rx='4'/><rect x='60' y='216' width='220' height='7' rx='3'/></g><rect x='360' y='200' width='60' height='18' rx='9' fill='%233ddc97' opacity='0.75'/></svg>">
+          </div>
+          <div class="body">
+            <h3>三人异地拍一部短片：云端审片的真实体验</h3>
+            <p class="desc">分处三个时区，如何用评论标记与版本对比把审片会议压缩到 40 分钟。</p>
+            <div class="tags"><span>#协作</span><span>#剪辑思路</span></div>
+            <div class="author-row"><span class="avatar" style="background:#ff7b9c">周</span><span class="nm">周末片场</span><span class="dt">1 周前</span></div>
+            <div class="actions">
+              <button class="act like">♡ 986</button>
+              <button class="act fav">☆ 收藏</button>
+              <button class="act comment">💬 评论</button>
+              <button class="act share">↗ 分享</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="v-card" data-cat="life">
+          <div class="cover">
+            <span class="tb">生活方式</span><span class="dur">05:44</span>
+            <img alt="家庭影像整理与收纳日常记录封面" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 270'><rect width='480' height='270' fill='%231a2418'/><rect x='0' y='190' width='480' height='80' fill='%231f2c1c'/><rect x='52' y='60' width='120' height='130' rx='8' fill='%232b3a26' stroke='%233b4f33'/><rect x='188' y='90' width='90' height='100' rx='8' fill='%2333442c'/><rect x='300' y='72' width='130' height='118' rx='8' fill='%232b3a26' stroke='%233b4f33'/><g fill='%23a8d98a' opacity='0.7'><rect x='70' y='78' width='60' height='7' rx='3'/><rect x='70' y='94' width='84' height='7' rx='3'/><rect x='204' y='108' width='58' height='7' rx='3'/><rect x='318' y='90' width='70' height='7' rx='3'/><rect x='318' y='106' width='48' height='7' rx='3'/></g><circle cx='390' cy='46' r='18' fill='%23ffd166' opacity='0.75'/><path d='M60 210 Q140 190 220 210 T400 200' stroke='%233ddc97' stroke-width='3' fill='none' opacity='0.6'/></svg>">
+          </div>
+          <div class="body">
+            <h3>把家里的老硬盘清空：一次温柔的数字整理</h3>
+            <p class="desc">十年照片、孩子第一次走路的片段、父母年轻时的录像，如何在云端被重新安放。</p>
+            <div class="tags"><span>#家庭影像</span><span>#收纳</span></div>
+            <div class="author-row"><span class="avatar" style="background:#a8d98a">苏</span><span class="nm">苏木日常</span><span class="dt">3 天前</span></div>
+            <div class="actions">
+              <button class="act like">♡ 1.5k</button>
+              <button class="act fav">☆ 收藏</button>
+              <button class="act comment">💬 评论</button>
+              <button class="act share">↗ 分享</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="v-card" data-cat="tutorial">
+          <div class="cover">
+            <span class="tb">经验分享</span><span class="dur">11:28</span>
+            <img alt="自由职业者素材交付与客户协同流程封面" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 270'><rect width='480' height='270' fill='%230f1720'/><rect x='36' y='36' width='250' height='198' rx='12' fill='%2318202c' stroke='%232a3340'/><rect x='56' y='56' width='100' height='10' rx='5' fill='%235aa9ff'/><rect x='56' y='82' width='200' height='8' rx='4' fill='%232a3340'/><rect x='56' y='102' width='170' height='8' rx='4' fill='%232a3340'/><rect x='56' y='122' width='190' height='8' rx='4' fill='%232a3340'/><rect x='56' y='152' width='90' height='24' rx='12' fill='%233ddc97' opacity='0.8'/><rect x='156' y='152' width='90' height='24' rx='12' fill='%232a3340'/><rect x='306' y='36' width='138' height='92' rx='12' fill='%2318202c' stroke='%232a3340'/><circle cx='375' cy='82' r='24' fill='none' stroke='%23ffd166' stroke-width='3'/><path d='M375 68 L375 96 M361 82 L389 82' stroke='%23ffd166' stroke-width='3'/><rect x='306' y='142' width='138' height='92' rx='12' fill='%2318202c' stroke='%232a3340'/><rect x='324' y='162' width='70' height='8' rx='4' fill='%23ff7b9c'/><rect x='324' y='180' width='100' height='7' rx='3' fill='%232a3340'/><rect x='324' y='200' width='60' height='16' rx='8' fill='%232a3340'/></svg>">
+          </div>
+          <div class="body">
+            <h3>自由职业影像师的交付清单：从上传到签收</h3>
+            <p class="desc">一封规范的交付邮件、一个带权限的分享链接，能让回款周期缩短将近一半。</p>
+            <div class="tags"><span>#职场日常</span><span>#交付</span></div>
+            <div class="author-row"><span class="avatar" style="background:#5aa9ff">陈</span><span class="nm">陈默的自由档案</span><span class="dt">6 天前</span></div>
+            <div class="actions">
+              <button class="act like">♡ 1.2k</button>
+              <button class="act fav">☆ 收藏</button>
+              <button class="act comment">💬 评论</button>
+              <button class="act share">↗ 分享</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 专题企划 -->
+  <section id="topics">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2>专题企划 · 持续更新</h2>
+          <p>以季度为单位的策展计划，围绕影像、存储与人的关系展开长期观察。</p>
+        </div>
+      </div>
+      <div class="topic-grid">
+        <article class="topic">
+          <div class="cover"><img alt="城市切片专题封面：街区与数据线条交叠" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 360 450'><defs><linearGradient id='t1' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='%230c1b2a'/><stop offset='1' stop-color='%23162a3d'/></linearGradient></defs><rect width='360' height='450' fill='url(%23t1)'/><g fill='%231e3a52'><rect x='30' y='210' width='60' height='240'/><rect x='110' y='150' width='70' height='300'/><rect x='200' y='240' width='64' height='210'/><rect x='284' y='180' width='50' height='270'/></g><g stroke='%233ddc97' fill='none' stroke-width='2' opacity='0.7'><path d='M0 120 Q90 80 180 120 T360 100'/><path d='M0 90 Q100 50 190 90 T360 70'/></g><g fill='%23ffd166' opacity='0.85'><circle cx='120' cy='180' r='4'/><circle cx='292' cy='210' r='4'/><circle cx='216' cy='270' r='4'/></g></svg>"></div>
+          <div class="ov"><h3>城市切片</h3><p>一百位记录者，一百种城市切面</p><span class="st">已更新 12 条 · 连载中</span></div>
+        </article>
+        <article class="topic">
+          <div class="cover"><img alt="存储进化论专题封面：胶片与云端符号并置" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 360 450'><rect width='360' height='450' fill='%231a1520'/><rect x='46' y='120' width='120' height='150' rx='8' fill='%232c2136' stroke='%23443452'/><g fill='%235c4a6e'><rect x='66' y='140' width='80' height='14' rx='4'/><rect x='66' y='164' width='80' height='14' rx='4'/><rect x='66' y='188' width='80' height='14' rx='4'/></g><circle cx='250' cy='180' r='46' fill='none' stroke='%23ff7b9c' stroke-width='4'/><path d='M250 154 L250 206 M224 180 L276 180' stroke='%23ff7b9c' stroke-width='4'/><rect x='196' y='262' width='118' height='90' rx='10' fill='%23201a2c' stroke='%23443452'/><g fill='%23ffd166' opacity='0.7'><rect x='214' y='282' width='82' height='8' rx='4'/><rect x='214' y='300' width='60' height='8' rx='4'/></g></svg>"></div>
+          <div class="ov"><h3>存储进化论</h3><p>从软盘到云端，记忆载体变迁史</p><span class="st">已更新 8 条 · 连载中</span></div>
+        </article>
+        <article class="topic">
+          <div class="cover"><img alt="创作者的一天专题封面：桌面与时间轴" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 360 450'><rect width='360' height='450' fill='%230e1c1a'/><rect x='40' y='250' width='280' height='120' rx='10' fill='%231c2e2a' stroke='%23314a44'/><rect x='70' y='120' width='130' height='90' rx='8' fill='%23223833' stroke='%23314a44'/><circle cx='250' cy='165' r='38' fill='%23ffd166' opacity='0.75'/><g stroke='%233ddc97' stroke-width='3' fill='none'><path d='M40 320 L120 280 L200 310 L280 270 L320 290'/></g><g fill='%235aa9ff' opacity='0.7'><circle cx='120' cy='280' r='5'/><circle cx='200' cy='310' r='5'/><circle cx='280' cy='270' r='5'/></g></svg>"></div>
+          <div class="ov"><h3>创作者的一天</h3><p>从开机到收工，工作流的真实模样</p><span class="st">已更新 15 条 · 连载中</span></div>
+        </article>
+        <article class="topic">
+          <div class="cover"><img alt="隐形资产专题封面：加密锁与数据流" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 360 450'><rect width='360' height='450' fill='%23101224'/><rect x='110' y='150' width='140' height='120' rx='12' fill='none' stroke='%235aa9ff' stroke-width='4'/><path d='M150 150 L150 112 A40 40 0 0 1 230 112 L230 150' fill='none' stroke='%233ddc97' stroke-width='4'/><circle cx='180' cy='210' r='12' fill='%23ff7b9c'/><rect x='175' y='218' width='10' height='26' rx='4' fill='%23ff7b9c'/><g stroke='%232a3a52' stroke-width='2' opacity='0.8'><path d='M0 320 Q90 290 180 320 T360 300'/><path d='M0 350 Q90 320 180 350 T360 330'/><path d='M0 380 Q90 350 180 380 T360 360'/></g></svg>"></div>
+          <div class="ov"><h3>隐形资产</h3><p>素材版权、隐私与数据安全的日常</p><span class="st">已更新 6 条 · 连载中</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 创作者矩阵 -->
+  <section id="creators">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2>创作者矩阵 · 官方推荐</h2>
+          <p>在 SilkLab 社区持续产出原创内容的人，他们用影像记录专业，也用分享连接彼此。</p>
+        </div>
+      </div>
+      <div class="creator-scroll">
+
+        <article class="creator">
+          <div class="top">
+            <span class="avatar" style="background:#3ddc97">林</span>
+            <div><h3>林屿影像</h3><span class="field">影像工作流 / 教程</span></div>
+          </div>
+          <p>从业八年的独立摄影指导，擅长把复杂的后期流程讲成可以照做的步骤。</p>
+          <div class="nums"><div><b>186</b>作品</div><div><b>12.4万</b>粉丝</div></div>
+          <button class="more">查看主页</button>
+        </article>
+
+        <article class="creator">
+          <div class="top">
+            <span class="avatar" style="background:#5aa9ff">衡</span>
+            <div><h3>测评君阿衡</h3><span class="field">深度测评 / 硬件</span></div>
+          </div>
+          <p>只做同一条件对比的测评，坚持公开测试素材与参数，被观众称为“较真派”。</p>
+          <div class="nums"><div><b>94</b>作品</div><div><b>8.7万</b>粉丝</div></div>
+          <button class="more">查看主页</button>
+        </article>
+
+        <article class="creator">
+          <div class="top">
+            <span class="avatar" style="background:#ffd166">片</span>
+            <div><h3>城市切片计划</h3><span class="field">城市探索 / 在地文化</span></div>
+          </div>
+          <p>由三位记录者发起的长期企划，把镜头对准老街区与新社区的日常缝隙。</p>
+          <div class="nums"><div><b>42</b>作品</div><div><b>6.1万</b>粉丝</div></div>
+          <button class="more">查看主页</button>
+        </article>
+
+        <article class="creator">
+          <div class="top">
+            <span class="avatar" style="background:#ff7b9c">周</span>
+            <div><h3>周末片场</h3><span class="field">创作幕后 / 短片</span></div>
+          </div>
+          <p>三人异地协作拍短片的小团队，乐于公开踩坑记录与协作流程。</p>
+          <div class="nums"><div><b>67</b>作品</div><div><b>4.9万</b>粉丝</div></div>
+          <button class="more">查看主页</button>
+        </article>
+
+        <article class="creator">
+          <div class="top">
+            <span class="avatar" style="background:#a8d98a">苏</span>
+            <div><h3>苏木日常</h3><span class="field">生活方式 / 家庭影像</span></div>
+          </div>
+          <p>用温柔的方式整理生活，把家庭影像当作可以传给下一代的礼物。</p>
+          <div class="nums"><div><b>128</b>作品</div><div><b>9.3万</b>粉丝</div></div>
+          <button class="more">查看主页</button>
+        </article>
+
+        <article class="creator">
+          <div class="top">
+            <span class="avatar" style="background:#c69cff">陈</span>
+            <div><h3>陈默的自由档案</h3><span class="field">职场日常 / 自由职业</span></div>
+          </div>
+          <p>记录自由职业者的收入结构、交付流程与自我管理，理性但不冷漠。</p>
+          <div class="nums"><div><b>73</b>作品</div><div><b>5.5万</b>粉丝</div></div>
+          <button class="more">查看主页</button>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 品牌故事 -->
+  <section id="story">
+    <div class="wrap story">
+      <div>
+        <h2>品牌故事 · 我们为什么做云盘</h2>
+        <p>SilkLab 云盘诞生于一支小型影像团队的困扰：素材散落在十几块硬盘里，交付靠快递，回忆靠运气。2019 年，团队决定自己搭一套能“懂影像”的存储系统，于是有了 SilkLab。</p>
+        <p>七年深耕垂直领域，我们坚持原创与正版，坚持高清不压缩的底线，坚持把复杂的同步逻辑藏进简单的交互里。今天的 SilkLab 已是数十万创作者与企业的内容生态基础设施，也仍然是一群影像爱好者做出来的产品。</p>
+        <p>我们相信，技术的社会责任是让记忆更长久、让创作更从容。官网持续公开产品路线与更新日志，用户至上不是口号，而是每一次版本发布前的真实走访。</p>
+        <div class="kpis">
+          <div class="kpi"><b>2019</b><span>品牌创立</span></div>
+          <div class="kpi"><b>7 年</b><span>持续运营</span></div>
+          <div class="kpi"><b>42 万</b><span>创作者信赖</span></div>
+        </div>
+      </div>
+      <div class="pic">
+        <img alt="SilkLab云盘团队在影像工作室内讨论素材归档方案" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 560 420'><defs><linearGradient id='s1' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%2313222c'/><stop offset='1' stop-color='%231a2a20'/></linearGradient></defs><rect width='560' height='420' fill='url(%23s1)'/><rect x='40' y='260' width='480' height='110' rx='12' fill='%231a2833' stroke='%232a3a48'/><rect x='70' y='150' width='150' height='100' rx='8' fill='%2321403a' stroke='%23314a44'/><rect x='250' y='120' width='180' height='130' rx='8' fill='%23213646' stroke='%232f4760'/><g fill='%23e6edf3' opacity='0.6'><rect x='270' y='144' width='100' height='9' rx='4'/><rect x='270' y='166' width='140' height='8' rx='4'/><rect x='270' y='186' width='120' height='8' rx='4'/><rect x='270' y='206' width='80' height='8' rx='4'/></g><g><circle cx='120' cy='300' r='20' fill='%233ddc97' opacity='0.85'/><circle cx='190' cy='300' r='20' fill='%235aa9ff' opacity='0.85'/><circle cx='260' cy='300' r='20' fill='%23ffd166' opacity='0.85'/><circle cx='330' cy='300' r='20' fill='%23ff7b9c' opacity='0.85'/></g><g fill='%23cfe3d6' opacity='0.7'><rect x='90' y='340' width='150' height='9' rx='4'/><rect x='270' y='340' width='190' height='9' rx='4'/></g><path d='M460 120 L500 120 L500 180 L460 180 Z' fill='none' stroke='%233ddc97' stroke-width='3' opacity='0.7'/></svg>">
+      </div>
+    </div>
+  </section>
+
+  <!-- 创作灵感 + 用户评价 -->
+  <section id="inspire">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2>创作灵感 · 官方工具</h2>
+          <p>把素材库变成选题库，把整理变成下一次创作的开始。这些工具对全部注册创作者开放。</p>
+        </div>
+      </div>
+      <div class="tools">
+        <div class="tool">
+          <div class="ic">✎</div>
+          <h3>脚本灵感生成</h3>
+          <p>输入主题与时长，给出三个不同叙事结构的分镜脚本建议，适合周更作者快速启动。</p>
+          <button class="tool-btn" data-tool="脚本灵感生成">生成试试</button>
+        </div>
+        <div class="tool">
+          <div class="ic">◎</div>
+          <h3>标题与封面建议</h3>
+          <p>基于站内高完播内容的表达习惯，给出视频标题与封面文字的组合参考。</p>
+          <button class="tool-btn" data-tool="标题与封面建议">生成试试</button>
+        </div>
+        <div class="tool">
+          <div class="ic">✂</div>
+          <h3>剪辑思路梳理</h3>
+          <p>上传素材清单模板，按情绪、节奏、信息密度三个维度生成剪辑顺序参考。</p>
+          <button class="tool-btn" data-tool="剪辑思路梳理">生成试试</button>
+        </div>
+      </div>
+
+      <div class="sec-head" style="margin-top:56px">
+        <div>
+          <h2>用户口碑 · 真实反馈</h2>
+          <p>来自不同使用场景的声音：个人创作者、小型工作室、家庭用户与企业团队。</p>
+        </div>
+      </div>
+      <div class="reviews">
+        <div class="review"><div class="quote">“</div><p>做了六年独立摄影，第一次感觉素材库是资产而不是负担。命名规范那期教程我反复看了三遍，直接落地省了很多返工。</p><div class="who"><span class="avatar" style="background:#3ddc97">李</span><span>李维 · 独立摄影师</span></div></div>
+        <div class="review"><div class="quote">“</div><p>团队四个人分布在三个城市，审片从原来一周一次视频会议变成链接加评论，节奏完全不一样了。</p><div class="who"><span class="avatar" style="background:#5aa9ff">赵</span><span>赵敏 · 短片工作室制片</span></div></div>
+        <div class="review"><div class="quote">“</div><p>最打动我的不是功能，是它保留了原画。老录像修复后传上去，父母看着看着就红了眼眶。</p><div class="who"><span class="avatar" style="background:#ffd166">何</span><span>何雨 · 家庭用户</span></div></div>
+        <div class="review"><div class="quote">“</div><p>作为企业账号接入，权限管理和日志审计做得比我预期的细，IT 部门对接一次就过了。</p><div class="who"><span class="avatar" style="background:#ff7b9c">吴</span><span>吴磊 · 企业信息化负责人</span></div></div>
+        <div class="review"><div class="quote">“</div><p>更新日志我看得比产品发布会还认真，能感觉到这团队是真的在用自己产品。</p><div class="who"><span class="avatar" style="background:#a8d98a">郑</span><span>郑一鸣 · 科技内容作者</span></div></div>
+        <div class="review"><div class="quote">“</div><p>社区里的分享氛围很舒服，大家会认真讨论一个镜头为什么这么剪，而不是只刷数据。</p><div class="who"><span class="avatar" style="background:#c69cff">孙</span><span>孙晓 · 影像社区活跃用户</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 企业动态 -->
+  <section id="news">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2>企业动态 · 官方发布</h2>
+          <p>产品迭代、社区活动与品牌合作的最新信息，均以此处发布为准。</p>
+        </div>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <time>2025 年 6 月 12 日</time>
+          <h3>SilkLab 3.2 版本上线</h3>
+          <p>新增素材智能分类、多人协作空间与跨端剪贴板，企业版同步开放容量弹性扩容。</p>
+        </div>
+        <div class="tl-item">
+          <time>2025 年 5 月 28 日</time>
+          <h3>第二届「城市切片」影像征集启动</h3>
+          <p>面向全站创作者征集城市日常影像，优秀作品将进入官方专题并获正版授权支持。</p>
+        </div>
+        <div class="tl-item">
+          <time>2025 年 5 月 9 日</time>
+          <h3>与三家影像教育机构达成合作</h3>
+          <p>共同推出面向青年创作者的工作流课程，涵盖拍摄归档、版权意识与交付规范。</p>
+        </div>
+        <div class="tl-item">
+          <time>2025 年 4 月 18 日</time>
+          <h3>创作者激励计划第二期结算完成</h3>
+          <p>本期共支持 316 位创作者，激励内容以教程、访谈与幕后记录为主。</p>
+        </div>
+        <div class="tl-item">
+          <time>2025 年 3 月 30 日</time>
+          <h3>数据安全白皮书发布</h3>
+          <p>公开端到端加密、异地容灾与隐私最小化设计的完整说明，接受社区监督。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-head" style="justify-content:center;text-align:center">
+        <div>
+          <h2 style="display:inline-block">帮助中心 · 常见问题</h2>
+          <p style="margin:10px auto 0">关于存储、创作与社区规则的常见疑问，点击查看详细说明。</p>
+        </div>
+      </div>
+      <div class="faq-list">
+        <details open>
+          <summary>SilkLab 云盘支持哪些类型的文件存储？</summary>
+          <div class="ans">支持视频、音频、图片、文档与压缩包等常见格式，单文件上限依据套餐不同为 10GB 至 200GB。影像类文件默认保留原始码率，不做二次压缩。</div>
+        </details>
+        <details>
+          <summary>上传的原创内容版权归谁所有？</summary>
+          <div class="ans">版权始终归上传者所有。平台仅在获得授权的前提下提供展示与分发，创作者可随时调整内容的公开范围或撤销授权。</div>
+        </details>
+        <details>
+          <summary>如何邀请团队成员共同协作？</summary>
+          <div class="ans">在企业空间中创建项目后，通过邀请链接或邮箱添加成员，并为成员设置查看、评论、编辑等不同权限，所有操作均记录在协作日志中。</div>
+        </details>
+        <details>
+          <summary>分享链接会有有效期吗？</summary>
+          <div class="ans">可以在生成分享链接时设置有效期、访问密码与下载权限。到期后链接自动失效，已建立的协作关系不受影响。</div>
+        </details>
+        <details>
+          <summary>社区投稿有什么要求？</summary>
+          <div class="ans">投稿内容需为原创或已取得合法授权，画面清晰、音轨完整，并避免侵权音乐与未授权素材。编辑团队会在三个工作日内给出反馈。</div>
+        </details>
+        <details>
+          <summary>数据存储在哪里，安全如何保障？</summary>
+          <div class="ans">数据采用多地冗余存储，传输与静态存储均加密处理，并提供版本历史与回收站机制，误删文件可在 30 天内恢复。</div>
+        </details>
+        <details>
+          <summary>可以下载已归档的原始素材吗？</summary>
+          <div class="ans">可以。原始素材保留原始编码，下载时不会改变分辨率与码率。批量下载支持断点续传与分卷打包。</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系 -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-box">
+        <div>
+          <h2>与 SilkLab 建立联系</h2>
+          <p>无论是企业空间咨询、内容合作、投稿建议还是产品反馈，我们都希望听见你的声音。工作时间内通常在 1 个工作日内回复。</p>
+          <div class="contact-list">
+            <div><b>合作邮箱</b> partner@silklab.example</div>
+            <div><b>投稿通道</b> creator@silklab.example</div>
+            <div><b>企业服务</b> 工作日 09:00 - 18:00</div>
+            <div><b>办公地址</b> 创意产业园 A 座 7 层</div>
+          </div>
+        </div>
+        <div class="contact-btns">
+          <button class="btn btn-main" id="submitBtn">投稿入口</button>
+          <button class="btn btn-ghost" id="shareBtn">分享官网</button>
+          <button class="btn btn-ghost" id="feedbackBtn">反馈建议</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="logo" style="margin-bottom:14px">
+          <span class="mark">S</span>
+          <span>SilkLab<small>CLOUD VIDEO</small></span>
+        </div>
+        <p>SilkLab 云盘官方网站，专注云端影像存储与内容生态建设。持续运营、坚持原创、尊重版权，为创作者与企业提供值得信赖的影像资产管理服务。</p>
+      </div>
+      <div>
+        <h4>内容</h4>
+        <a href="#focus">影像焦点</a>
+        <a href="#videos">热门内容</a>
+        <a href="#topics">专题企划</a>
+        <a href="#creators">创作者</a>
+      </div>
+      <div>
+        <h4>关于</h4>
+        <a href="#story">品牌故事</a>
+        <a href="#news">企业动态</a>
+        <a href="#faq">帮助中心</a>
+        <a href="#contact">联系我们</a>
+      </div>
+      <div>
+        <h4>社区</h4>
+        <a href="#contact">投稿指南</a>
+        <a href="#inspire">创作工具</a>
+        <a href="#contact">合作洽谈</a>
+        <a href="#faq">规则说明</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2025 SilkLab 云盘 · 版权所有 · 持续运营中</span>
+      <span>品牌备案信息占位 · 内容合作请通过官方渠道</span>
+    </div>
+  </div>
+</footer>
+
+<button id="toTop" aria-label="回到顶部">↑</button>
+<div id="toast"></div>
+
+<div class="modal-mask" id="modalMask">
+  <div class="modal">
+    <button class="close" id="modalClose">×</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var toast=document.getElementById('toast');
+  var toastTimer=null;
+  function showToast(msg){
+    toast.textContent=msg;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer=setTimeout(function(){toast.classList.remove('show');},2200);
+  }
+  window.__showToast=showToast;
+
+  /* 移动端导航 */
+  var burger=document.getElementById('burger');
+  var menu=document.getElementById('menu');
+  burger.addEventListener('click',function(){
+    menu.classList.toggle('open');
+  });
+  menu.addEventListener('click',function(e){
+    if(e.target.tagName==='A') menu.classList.remove('open');
+  });
+
+  /* 搜索反馈 */
+  var searchForm=document.getElementById('searchForm');
+  var searchInput=document.getElementById('searchInput');
+  var feedback=document.getElementById('feedback');
+  searchForm.addEventListener('submit',function(){
+    var q=searchInput.value.trim();
+    if(!q){
+      feedback.textContent='请输入关键词后再搜索，例如「归档」「4K」「城市」';
+      feedback.classList.add('on');
+      return;
+    }
+    feedback.textContent='已为你匹配「'+q+'」相关影像与创作者，共 26 条结果，可前往热门内容区查看';
+    feedback.classList.add('on');
+    var target=document.getElementById('videos');
+    if(target) target.scrollIntoView({behavior:'smooth'});
+  });
+  document.getElementById('searchBtn').addEventListener('click',function(e){
+    e.preventDefault();
+    searchForm.dispatchEvent(new Event('submit'));
+  });
+
+  /* 标签筛选 */
+  var chips=document.getElementById('chips');
+  var cards=Array.prototype.slice.call(document.querySelectorAll('#vGrid .v-card'));
+  chips.addEventListener('click',function(e){
+    var btn=e.target.closest('.chip');
+    if(!btn) return;
+    Array.prototype.forEach.call(chips.children,function(c){c.classList.remove('active');});
+    btn.classList.add('active');
+    var cat=btn.getAttribute('data-cat');
+    cards.forEach(function(card){
+      var ok=(cat==='all'||card.getAttribute('data-cat')===cat);
+      card.style.display=ok?'flex':'none';
+    });
+  });
+
+  /* 点赞 / 收藏 */
+  document.addEventListener('click',function(e){
+    var like=e.target.closest('.act.like');
+    if(like){
+      var liked=like.classList.toggle('liked');
+      var txt=like.textContent.replace(/[0-9\.]+k?/,'').trim();
+      var num=like.getAttribute('data-n')?parseFloat(like.getAttribute('data-n')):parseFloat(like.textContent.replace(/[^\d\.]/g,''))||0;
+      if(!like.getAttribute('data-n')) like.setAttribute('data-n',num);
+      num=parseFloat(like.getAttribute('data-n'));
+      var next=liked?num+0.1:num;
+      if(liked) like.setAttribute('data-n',next);
+      like.textContent=(liked?'♥ ':'♡ ')+next.toFixed(1)+'k';
+      showToast(liked?'已点赞，感谢支持原创内容':'已取消点赞');
+      return;
+    }
+    var fav=e.target.closest('.act.fav');
+    if(fav){
+      var on=fav.classList.toggle('faved');
+      fav.textContent=on?'★ 已收藏':'☆ 收藏';
+      showToast(on?'已加入收藏夹，可在个人主页查看':'已取消收藏');
+      return;
+    }
+    var cm=e.target.closest('.act.comment');
+    if(cm){
+      openModal('<h3>参与评论</h3><p>友善交流是社区的基础，你的评论将在审核后展示。</p><textarea placeholder="写下你的看法……"></textarea><button class="btn btn-main" style="width:100%" onclick="window.__showToast(\'评论已提交，审核通过后展示\');document.getElementById(\'modalMask\').classList.remove(\'on\')">提交评论</button>');
+      return;
+    }
+    var sh=e.target.closest('.act.share');
+    if(sh){
+      copyLink();
+      return;
+    }
+    var more=e.target.closest('.creator .more');
+    if(more){
+      var card=more.closest('.creator');
+      var name=card.querySelector('h3').textContent;
+      var field=card.querySelector('.field').textContent;
+      var desc=card.querySelector('p').textContent;
+      openModal('<h3>'+name+'</h3><p>擅长领域：'+field+'</p><p>'+desc+'</p><button class="btn btn-main" style="width:100%" onclick="window.__showToast(\'已关注该创作者\');document.getElementById(\'modalMask\').classList.remove(\'on\')">关注创作者</button>');
+      return;
+    }
+    var tool=e.target.closest('.tool-btn');
+    if(tool){
+      var t=tool.getAttribute('data-tool');
+      showToast('已为你生成一份「'+t+'」参考，请前往创作者中心查看');
+      return;
+    }
+  });
+
+  /* 弹窗 */
+  var modalMask=document.getElementById('modalMask');
+  var modalContent=document.getElementById('modalContent');
+  function openModal(html){
+    modalContent.innerHTML=html;
+    modalMask.classList.add('on');
+  }
+  window.openModal=openModal;
+  document.getElementById('modalClose').addEventListener('click',function(){
+    modalMask.classList.remove('on');
+  });
+  modalMask.addEventListener('click',function(e){
+    if(e.target===modalMask) modalMask.classList.remove('on');
+  });
+
+  /* 复制链接 */
+  function copyLink(){
+    var url=location.href.split('#')[0];
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(function(){
+        showToast('链接已复制，可分享给同好');
+      }).catch(function(){
+        showToast('已生成分享链接，请手动复制');
+      });
+    }else{
+      showToast('已生成分享链接，请手动复制');
+    }
+  }
+
+  /* 联系区按钮 */
+  document.getElementById('submitBtn').addEventListener('click',function(){
+    openModal('<h3>投稿入口</h3><p>提交你的原创影像作品，通过审核后将进入社区精选与专题候选。</p><input type="text" placeholder="作品标题"><input type="text" placeholder="联系方式（邮箱）"><textarea placeholder="用一句话介绍你的作品……"></textarea><button class="btn btn-main" style="width:100%" onclick="window.__showToast(\'投稿已提交，三个工作日内回复\');document.getElementById(\'modalMask\').classList.remove(\'on\')">提交投稿</button>');
+  });
+  document.getElementById('shareBtn').addEventListener('click',copyLink);
+  document.getElementById('feedbackBtn').addEventListener('click',function(){
+    openModal('<h3>反馈建议</h3><p>你的每一条反馈都会进入产品评审清单，感谢你帮助 SilkLab 变得更好。</p><textarea placeholder="写下你的建议或遇到的问题……"></textarea><button class="btn btn-main" style="width:100%" onclick="window.__showToast(\'反馈已收到，感谢你的建议\');document.getElementById(\'modalMask\').classList.remove(\'on\')">提交反馈</button>');
+  });
+
+  /* 回到顶部 */
+  var toTop=document.getElementById('toTop');
+  window.addEventListener('scroll',function(){
+    if(window.scrollY>600) toTop.classList.add('on');
+    else toTop.classList.remove('on');
+  });
+  toTop.addEventListener('click',function(){
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+})();
+</script>
+</body>
+  </html>
