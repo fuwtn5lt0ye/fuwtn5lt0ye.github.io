@@ -1,0 +1,1199 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>域名查询 - 网络域名信息平台 - 专注数字资产查询</title>
+<meta name="description" content="域名查询官方网站，深耕网络域名信息服务领域，为用户提供专业、权威的域名信息查询与数字资产内容，持续运营的高品质行业内容生态。">
+<meta name="keywords" content="域名查询,官方网站,数字资产,域名信息,网络资产,企业,平台,创作者,内容生态">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "域名查询",
+  "description": "域名查询官方网站，深耕网络域名信息服务领域，为用户提供专业、权威的域名信息查询与数字资产内容。",
+  "slogan": "专注数字资产，洞察网络价值"
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0d1117;
+  --surface:#161b22;
+  --surface2:#1c2430;
+  --accent:#00e5a0;
+  --accent2:#3b82f6;
+  --accent3:#f59e0b;
+  --text:#e6edf3;
+  --text2:#8b949e;
+  --border:#30363d;
+  --radius:14px;
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+html{scroll-behavior:smooth;scroll-padding-top:110px}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.container{max-width:1240px;margin:0 auto;padding:0 24px}
+
+/* Sticky wrapper */
+.sticky-top{position:sticky;top:0;z-index:1000}
+
+/* Announcement bar */
+.announce{background:linear-gradient(90deg,#003b2f,#004d5a,#003b2f);border-bottom:1px solid rgba(0,229,160,.25);padding:8px 0;font-size:13px}
+.announce-inner{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;text-align:center}
+.announce-tag{background:var(--accent);color:#003b2f;font-weight:700;padding:1px 9px;border-radius:20px;font-size:11px;letter-spacing:.5px;white-space:nowrap}
+.announce-text{color:#9ee8d0}
+.announce-text strong{color:#fff}
+.announce-close{background:none;border:none;color:var(--text2);font-size:16px;cursor:pointer;line-height:1;padding:0 4px}
+.announce-close:hover{color:#fff}
+
+/* Header */
+header{background:rgba(13,17,23,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.header-inner{display:flex;align-items:center;gap:28px;padding:14px 0}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;letter-spacing:.5px;white-space:nowrap}
+.logo-mark{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#068f6b);display:flex;align-items:center;justify-content:center;font-size:17px;color:#003b2f;font-weight:900;box-shadow:0 0 18px rgba(0,229,160,.35)}
+nav.main-nav{display:flex;gap:4px;flex:1;flex-wrap:wrap}
+nav.main-nav a{padding:7px 13px;border-radius:8px;font-size:14px;color:var(--text2);transition:.2s;white-space:nowrap}
+nav.main-nav a:hover{color:var(--accent);background:rgba(0,229,160,.08)}
+.header-tools{display:flex;align-items:center;gap:10px}
+.search-box{position:relative;display:flex;align-items:center}
+.search-box input{background:var(--surface);border:1px solid var(--border);color:var(--text);padding:8px 34px 8px 13px;border-radius:9px;font-size:13px;width:190px;outline:none;transition:.25s;font-family:var(--font)}
+.search-box input:focus{border-color:var(--accent);width:220px;box-shadow:0 0 0 3px rgba(0,229,160,.12)}
+.search-box button{position:absolute;right:6px;background:none;border:none;color:var(--text2);cursor:pointer;font-size:14px;padding:4px}
+.search-box button:hover{color:var(--accent)}
+.search-feedback{position:absolute;top:44px;left:0;right:0;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:10px 13px;font-size:13px;color:var(--text2);display:none;z-index:20;box-shadow:0 12px 30px rgba(0,0,0,.5)}
+.search-feedback.show{display:block}
+.search-feedback b{color:var(--accent)}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:9px 20px;border-radius:9px;font-size:14px;font-weight:600;cursor:pointer;border:none;transition:.22s;font-family:var(--font)}
+.btn-primary{background:var(--accent);color:#003b2f}
+.btn-primary:hover{background:#14ffb4;transform:translateY(-1px)}
+.btn-ghost{background:transparent;border:1px solid var(--border);color:var(--text)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.menu-toggle{display:none;background:none;border:1px solid var(--border);color:var(--text);border-radius:8px;width:40px;height:38px;font-size:18px;cursor:pointer}
+
+/* Hero */
+.hero{padding:64px 0 56px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-180px;right:-120px;width:560px;height:560px;background:radial-gradient(circle,rgba(0,229,160,.13),transparent 65%);pointer-events:none}
+.hero::after{content:"";position:absolute;bottom:-220px;left:-140px;width:520px;height:520px;background:radial-gradient(circle,rgba(59,130,246,.1),transparent 65%);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,229,160,.1);border:1px solid rgba(0,229,160,.3);color:var(--accent);font-size:12.5px;font-weight:600;padding:5px 14px;border-radius:20px;margin-bottom:20px;letter-spacing:.3px}
+.hero-badge::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent)}
+h1{font-size:clamp(30px,4vw,46px);line-height:1.22;font-weight:800;letter-spacing:-.5px;margin-bottom:20px}
+h1 .hl{background:linear-gradient(120deg,var(--accent),#4dd8ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-desc{color:var(--text2);font-size:15px;margin-bottom:14px;max-width:520px}
+.hero-intro{color:var(--text2);font-size:14px;margin-bottom:26px;max-width:530px;line-height:1.85}
+.hero-intro strong{color:var(--text)}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px}
+.hero-stats{display:flex;gap:36px;flex-wrap:wrap}
+.hero-stat-num{font-size:26px;font-weight:800;color:var(--accent);letter-spacing:-.5px}
+.hero-stat-num small{font-size:14px;color:var(--text2);font-weight:500;margin-left:2px}
+.hero-stat-label{font-size:12.5px;color:var(--text2);margin-top:2px}
+.hero-visual{position:relative}
+.hero-img{width:100%;border-radius:18px;border:1px solid var(--border);box-shadow:0 24px 60px -18px rgba(0,0,0,.7);overflow:hidden}
+.hero-float{position:absolute;background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:10px 15px;font-size:12.5px;box-shadow:0 12px 30px rgba(0,0,0,.5);backdrop-filter:blur(8px)}
+.hero-float.f1{top:16px;left:-18px;color:var(--accent);font-weight:600}
+.hero-float.f2{bottom:22px;right:-14px;color:var(--text)}
+.hero-float.f2 span{color:var(--accent2);font-weight:700}
+
+/* Section base */
+section{padding:56px 0}
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:32px;flex-wrap:wrap}
+.section-head h2{font-size:clamp(21px,2.6vw,29px);font-weight:800;letter-spacing:-.4px}
+.section-head h2 span{color:var(--accent)}
+.section-head p{color:var(--text2);font-size:14px;margin-top:6px}
+.section-link{font-size:13.5px;color:var(--accent);font-weight:600;white-space:nowrap;padding-bottom:4px}
+.section-link:hover{text-decoration:underline}
+
+/* Focus */
+.focus-grid{display:grid;grid-template-columns:2fr 1fr;gap:20px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:.28s}
+.card:hover{transform:translateY(-4px);border-color:rgba(0,229,160,.45);box-shadow:0 18px 40px -16px rgba(0,0,0,.7)}
+.focus-main .thumb{position:relative;aspect-ratio:16/9;overflow:hidden}
+.focus-main .thumb img{width:100%;height:100%;object-fit:cover;transition:.4s}
+.focus-main:hover .thumb img{transform:scale(1.04)}
+.focus-main .body{padding:20px 22px}
+.focus-side{display:flex;flex-direction:column;gap:20px}
+.focus-side .card{display:flex;flex-direction:column}
+.focus-side .thumb{position:relative;aspect-ratio:16/9;overflow:hidden}
+.focus-side .thumb img{width:100%;height:100%;object-fit:cover;transition:.4s}
+.focus-side .card:hover .thumb img{transform:scale(1.05)}
+.focus-side .body{padding:13px 16px}
+.focus-side h3{font-size:14.5px;line-height:1.45}
+.play-icon{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.18);transition:.3s;opacity:0}
+.card:hover .play-icon{opacity:1}
+.play-icon span{width:48px;height:48px;border-radius:50%;background:rgba(0,229,160,.92);display:flex;align-items:center;justify-content:center;color:#003b2f;font-size:17px;padding-left:3px;box-shadow:0 0 24px rgba(0,229,160,.6)}
+.tag-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.tag{font-size:11.5px;padding:2px 9px;border-radius:6px;background:rgba(0,229,160,.1);color:var(--accent);font-weight:600}
+.tag.blue{background:rgba(59,130,246,.12);color:#7cb3ff}
+.tag.amber{background:rgba(245,158,11,.12);color:#fbbf24}
+.tag.purple{background:rgba(168,85,247,.12);color:#c084fc}
+h3{font-weight:700;letter-spacing:-.2px}
+.card-meta{display:flex;align-items:center;gap:12px;font-size:12.5px;color:var(--text2);flex-wrap:wrap}
+.card-meta .author{display:flex;align-items:center;gap:6px}
+.mini-avatar{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;color:#fff;flex-shrink:0}
+.card-excerpt{font-size:13px;color:var(--text2);margin:8px 0 12px;line-height:1.65}
+
+/* Video grid */
+.video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.video-card .thumb{position:relative;aspect-ratio:16/9;overflow:hidden}
+.video-card .thumb img{width:100%;height:100%;object-fit:cover;transition:.4s}
+.video-card:hover .thumb img{transform:scale(1.05)}
+.video-card .body{padding:16px 18px}
+.video-card h3{font-size:15px;line-height:1.42;margin-bottom:6px}
+.video-card .card-meta{margin-top:10px;padding-top:11px;border-top:1px solid var(--border)}
+.card-actions{display:flex;gap:14px;margin-top:10px}
+.act-btn{background:none;border:none;color:var(--text2);font-size:12.5px;cursor:pointer;display:flex;align-items:center;gap:5px;padding:3px 0;transition:.2s;font-family:var(--font)}
+.act-btn:hover{color:var(--accent)}
+.act-btn.liked{color:var(--accent)}
+.act-btn.faved{color:var(--accent3)}
+
+/* Topics */
+.topic-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.topic-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px 20px;transition:.26s;position:relative;overflow:hidden}
+.topic-card::after{content:"";position:absolute;inset:auto 0 0 0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));transform:scaleX(0);transform-origin:left;transition:.3s}
+.topic-card:hover{transform:translateY(-4px);border-color:rgba(0,229,160,.4)}
+.topic-card:hover::after{transform:scaleX(1)}
+.topic-num{font-size:12px;color:var(--accent);font-weight:700;letter-spacing:1px;margin-bottom:10px}
+.topic-card h3{font-size:16px;margin-bottom:8px}
+.topic-card p{font-size:12.8px;color:var(--text2);line-height:1.65}
+.topic-foot{margin-top:14px;display:flex;justify-content:space-between;font-size:12px;color:var(--text2)}
+
+/* Creators */
+.creator-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.creator-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px 20px;text-align:center;transition:.26s;cursor:pointer}
+.creator-card:hover{transform:translateY(-5px);border-color:rgba(0,229,160,.45);background:var(--surface2)}
+.creator-avatar{width:68px;height:68px;border-radius:50%;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;font-size:25px;font-weight:800;color:#fff;box-shadow:0 0 0 3px rgba(0,229,160,.18)}
+.creator-card h3{font-size:16px;margin-bottom:3px}
+.creator-field{font-size:12.5px;color:var(--accent);margin-bottom:10px}
+.creator-bio{font-size:12.5px;color:var(--text2);line-height:1.6;min-height:40px}
+.creator-stats{display:flex;justify-content:center;gap:20px;margin-top:14px;padding-top:14px;border-top:1px solid var(--border);font-size:12px;color:var(--text2)}
+.creator-stats b{display:block;color:var(--text);font-size:14px}
+
+/* Insights */
+.insight-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.insight-card{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent2);border-radius:12px;padding:20px 20px}
+.insight-card h3{font-size:15px;margin-bottom:9px}
+.insight-card p{font-size:13px;color:var(--text2);line-height:1.7}
+.insight-card .topic-foot{border:none;padding:0;margin-top:12px}
+
+/* Reviews */
+.review-wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.review-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px}
+.review-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.review-avatar{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;flex-shrink:0}
+.review-name{font-size:13.5px;font-weight:700}
+.review-stars{font-size:11px;color:var(--accent3);letter-spacing:1px}
+.review-body{font-size:13px;color:var(--text2);line-height:1.72}
+.review-card:nth-child(3n+1){border-top:3px solid rgba(0,229,160,.5)}
+.review-card:nth-child(3n+2){border-top:3px solid rgba(59,130,246,.5)}
+.review-card:nth-child(3n){border-top:3px solid rgba(245,158,11,.5)}
+
+/* News */
+.news-list{display:flex;flex-direction:column;gap:0;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.news-item{display:flex;align-items:flex-start;gap:18px;padding:18px 22px;border-bottom:1px solid var(--border);transition:.2s}
+.news-item:last-child{border-bottom:none}
+.news-item:hover{background:var(--surface2)}
+.news-date{font-size:12px;color:var(--accent);font-weight:700;white-space:nowrap;padding-top:2px;letter-spacing:.5px}
+.news-body h3{font-size:14.5px;margin-bottom:3px}
+.news-body p{font-size:12.8px;color:var(--text2)}
+
+/* FAQ */
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+details{background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:0 18px;transition:.2s}
+details[open]{border-color:rgba(0,229,160,.4);background:var(--surface2)}
+summary{padding:15px 0;font-size:14px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--accent);font-size:18px;font-weight:400;transition:.2s;flex-shrink:0}
+details[open] summary::after{content:"−"}
+details p{padding:0 0 16px;font-size:13px;color:var(--text2);line-height:1.72}
+
+/* Contact / CTA */
+.cta{background:linear-gradient(120deg,rgba(0,229,160,.09),rgba(59,130,246,.07));border:1px solid rgba(0,229,160,.22);border-radius:20px;padding:44px 40px;text-align:center;position:relative;overflow:hidden}
+.cta h2{font-size:clamp(21px,2.6vw,28px);margin-bottom:12px;font-weight:800}
+.cta p{color:var(--text2);font-size:14px;max-width:560px;margin:0 auto 26px}
+.cta-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.cta-info{display:flex;gap:34px;justify-content:center;flex-wrap:wrap;margin-top:30px;padding-top:26px;border-top:1px solid rgba(255,255,255,.08);font-size:13px;color:var(--text2)}
+.cta-info b{color:var(--text);display:block;font-size:14px;margin-bottom:2px}
+
+/* Footer */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:48px 0 26px;margin-top:20px}
+.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:36px;margin-bottom:36px}
+.footer-brand p{font-size:13px;color:var(--text2);line-height:1.75;margin:14px 0;max-width:300px}
+.footer-col h4{font-size:13.5px;margin-bottom:14px;color:var(--text);letter-spacing:.3px}
+.footer-col a{display:block;font-size:12.8px;color:var(--text2);padding:4px 0;transition:.2s}
+.footer-col a:hover{color:var(--accent)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:22px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--text2)}
+.footer-bottom a{color:var(--text2)}
+.footer-bottom a:hover{color:var(--accent)}
+
+/* Toast */
+.toast{position:fixed;bottom:34px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--surface2);border:1px solid var(--accent);color:var(--text);padding:12px 24px;border-radius:11px;font-size:13.5px;box-shadow:0 14px 36px rgba(0,0,0,.6);opacity:0;transition:.35s;z-index:3000;pointer-events:none;white-space:nowrap}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+
+/* Modal */
+.modal-mask{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;z-index:2500;padding:20px}
+.modal-mask.show{display:flex}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:16px;max-width:520px;width:100%;padding:28px;position:relative;max-height:86vh;overflow-y:auto}
+.modal h3{font-size:19px;margin-bottom:6px}
+.modal .modal-sub{font-size:13px;color:var(--text2);margin-bottom:20px}
+.modal label{display:block;font-size:13px;margin-bottom:7px;color:var(--text)}
+.modal input,.modal textarea{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:10px 13px;border-radius:9px;font-size:13.5px;margin-bottom:15px;outline:none;font-family:var(--font);transition:.2s}
+.modal input:focus,.modal textarea:focus{border-color:var(--accent)}
+.modal textarea{resize:vertical;min-height:90px}
+.modal-close{position:absolute;top:16px;right:18px;background:none;border:none;color:var(--text2);font-size:22px;cursor:pointer;line-height:1}
+.modal-close:hover{color:var(--accent)}
+.share-row{display:flex;gap:10px;flex-wrap:wrap}
+.share-row .btn{flex:1;justify-content:center;min-width:100px}
+.author-modal-stats{display:flex;gap:26px;margin:18px 0;padding:16px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.author-modal-stats div b{display:block;font-size:19px;color:var(--accent)}
+.author-modal-stats div span{font-size:12px;color:var(--text2)}
+
+/* Back to top */
+#backTop{position:fixed;right:26px;bottom:30px;width:46px;height:46px;border-radius:50%;background:var(--surface2);border:1px solid var(--border);color:var(--accent);font-size:19px;cursor:pointer;display:none;align-items:center;justify-content:center;z-index:900;transition:.25s;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+#backTop.show{display:flex}
+#backTop:hover{background:var(--accent);color:#003b2f;border-color:var(--accent)}
+
+@media(max-width:1024px){
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .focus-grid{grid-template-columns:1fr}
+  .focus-side{flex-direction:row}
+  .focus-side .card{flex:1}
+  .video-grid{grid-template-columns:repeat(2,1fr)}
+  .topic-grid{grid-template-columns:repeat(2,1fr)}
+  .creator-grid{grid-template-columns:repeat(2,1fr)}
+  .insight-grid{grid-template-columns:1fr}
+  .review-wrap{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .header-inner{flex-wrap:wrap;gap:12px}
+  nav.main-nav{display:none;width:100%;order:5;flex-direction:column;gap:2px;padding:10px 0;border-top:1px solid var(--border)}
+  nav.main-nav.open{display:flex}
+  nav.main-nav a{padding:10px 12px}
+  .menu-toggle{display:block}
+  .search-box input{width:150px}
+  .search-box input:focus{width:170px}
+  .hero{padding:44px 0 40px}
+  .hero-stats{gap:24px}
+  .focus-side{flex-direction:column}
+  .video-grid{grid-template-columns:1fr}
+  .topic-grid{grid-template-columns:1fr}
+  .creator-grid{grid-template-columns:1fr}
+  .review-wrap{grid-template-columns:1fr}
+  .faq-grid{grid-template-columns:1fr}
+  .cta{padding:32px 22px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .announce-text{font-size:12px}
+}
+@media(max-width:480px){
+  .footer-grid{grid-template-columns:1fr}
+  .hero-float{display:none}
+  .search-box input{width:120px}
+  .search-box input:focus{width:140px}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<div class="sticky-top">
+  <div class="announce" id="announceBar">
+    <div class="container announce-inner">
+      <span class="announce-tag">官方发布</span>
+      <span class="announce-text"><strong>「域名价值观察」2023年度专题</strong> 已上线 · 新增 12 期数字资产访谈 · 创作者招募通道开放报名中</span>
+      <button class="announce-close" id="announceClose" aria-label="关闭公告">×</button>
+    </div>
+  </div>
+
+  <header>
+    <div class="container header-inner">
+      <a href="#" class="logo"><span class="logo-mark">域</span>域名查询</a>
+      <nav class="main-nav" id="mainNav">
+        <a href="#hero">首页</a>
+        <a href="#focus">焦点内容</a>
+        <a href="#videos">热门视频</a>
+        <a href="#topics">专题企划</a>
+        <a href="#creators">创作者</a>
+        <a href="#insights">行业观察</a>
+        <a href="#news">企业动态</a>
+        <a href="#faq">帮助中心</a>
+        <a href="#contact">联系我们</a>
+      </nav>
+      <div class="header-tools">
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="搜索域名 / 专题 / 创作者" aria-label="站内搜索">
+          <button id="searchBtn" aria-label="搜索">🔍</button>
+          <div class="search-feedback" id="searchFeedback"></div>
+        </div>
+        <button class="btn btn-primary" onclick="openModal('submitModal')">投稿</button>
+        <button class="menu-toggle" id="menuToggle" aria-label="展开导航">☰</button>
+      </div>
+    </div>
+  </header>
+</div>
+
+<main>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="hero-badge">官方网站 · 持续运营 · 值得信赖</span>
+      <h1><span class="hl">域名查询</span>，让每一个数字资产都有据可查</h1>
+      <p class="hero-desc">专业、权威、高清的网络域名信息平台，深耕数字资产查询垂直领域。</p>
+      <p class="hero-intro">作为国内<strong>行业领先</strong>的域名信息服务<strong>企业</strong>，我们以<strong>官方网站</strong>为依托，搭建起查询、解读、科普与社区共创于一体的内容生态。平台汇聚众多<strong>创作者</strong>与企业伙伴，围绕域名知识科普、实用查询技巧、行业观察与品牌故事展开持续输出，坚持<strong>原创</strong>与<strong>正版</strong>内容品质，用真实、温暖的影像与文字陪伴每一位关注网络资产的用户成长。我们相信<strong>品质</strong>源于<strong>匠心</strong>，<strong>口碑</strong>来自<strong>用户至上</strong>的长期坚持。</p>
+      <div class="hero-actions">
+        <a href="#videos" class="btn btn-primary">探索精品内容 →</a>
+        <a href="#topics" class="btn btn-ghost">查看专题企划</a>
+        <button class="btn btn-ghost" onclick="openModal('submitModal')">加入创作社区</button>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">18<small>万+</small></div>
+          <div class="hero-stat-label">累计查询记录</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">2.6<small>万</small></div>
+          <div class="hero-stat-label">社区创作者</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">96.4<small>%</small></div>
+          <div class="hero-stat-label">用户满意度</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-img">
+        <svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="域名查询平台主视觉：深蓝网格与数据节点示意图">
+          <defs>
+            <linearGradient id="hg1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#071a18"/>
+              <stop offset="1" stop-color="#0e2e3e"/>
+            </linearGradient>
+            <linearGradient id="hg2" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#00e5a0"/>
+              <stop offset="1" stop-color="#3b82f6"/>
+            </linearGradient>
+          </defs>
+          <rect width="640" height="400" fill="url(#hg1)"/>
+          <g stroke="#00e5a0" stroke-opacity="0.09">
+            <path d="M0 80 H640 M0 160 H640 M0 240 H640 M0 320 H640"/>
+            <path d="M80 0 V400 M160 0 V400 M240 0 V400 M320 0 V400 M400 0 V400 M480 0 V400 M560 0 V400"/>
+          </g>
+          <circle cx="480" cy="120" r="86" fill="none" stroke="url(#hg2)" stroke-width="1.6" stroke-opacity="0.7"/>
+          <circle cx="480" cy="120" r="120" fill="none" stroke="#3b82f6" stroke-opacity="0.22" stroke-width="1"/>
+          <circle cx="480" cy="120" r="54" fill="#00e5a0" fill-opacity="0.08" stroke="#00e5a0" stroke-opacity="0.5"/>
+          <circle cx="480" cy="120" r="9" fill="#00e5a0"/>
+          <g stroke="#3b82f6" stroke-opacity="0.5" stroke-width="1.2">
+            <path d="M480 120 L340 80 M480 120 L560 250 M480 120 L300 220 M480 120 L600 90"/>
+          </g>
+          <circle cx="340" cy="80" r="6" fill="#3b82f6"/>
+          <circle cx="560" cy="250" r="6" fill="#3b82f6"/>
+          <circle cx="300" cy="220" r="6" fill="#00e5a0"/>
+          <circle cx="600" cy="90" r="5" fill="#f59e0b"/>
+          <g fill="#9ee8d0" font-family="monospace" font-size="15">
+            <text x="120" y="150">.com</text>
+            <text x="150" y="290">.net</text>
+            <text x="90" y="340">.cn</text>
+          </g>
+          <rect x="40" y="40" width="130" height="30" rx="8" fill="#00e5a0" fill-opacity="0.12"/>
+          <text x="56" y="60" fill="#00e5a0" font-family="monospace" font-size="14">QUERY · 2023</text>
+        </svg>
+      </div>
+      <div class="hero-float f1">实时查询 · 秒级响应</div>
+      <div class="hero-float f2">今日新增 <span>1,842</span> 条记录</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOCUS -->
+<section id="focus">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2>焦点<span>内容</span></h2>
+        <p>编辑精选 · 官方发布 · 深度解读数字资产背后的故事</p>
+      </div>
+      <a href="#videos" class="section-link">查看全部 →</a>
+    </div>
+    <div class="focus-grid">
+      <article class="card focus-main">
+        <div class="thumb">
+          <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E%3Cdefs%3E%3ClinearGradient id='a' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23052e28'/%3E%3Cstop offset='1' stop-color='%23103c52'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='450' fill='url(%23a)'/%3E%3Cg fill='none' stroke='%2300e5a0' stroke-opacity='0.25'%3E%3Ccircle cx='400' cy='225' r='150'/%3E%3Ccircle cx='400' cy='225' r='95'/%3E%3Ccircle cx='400' cy='225' r='40'/%3E%3C/g%3E%3Cg fill='%2300e5a0'%3E%3Crect x='168' y='213' width='24' height='24' rx='3'/%3E%3Crect x='608' y='213' width='24' height='24' rx='3'/%3E%3Crect x='388' y='73' width='24' height='24' rx='3'/%3E%3Crect x='388' y='353' width='24' height='24' rx='3'/%3E%3C/g%3E%3Ctext x='400' y='233' fill='%23e6edf3' font-family='sans-serif' font-size='30' font-weight='bold' text-anchor='middle'%3EDOMAIN%3C/text%3E%3Crect x='330' y='380' width='140' height='30' rx='15' fill='%2300e5a0' fill-opacity='0.15'/%3E%3Ctext x='400' y='400' fill='%2300e5a0' font-family='sans-serif' font-size='13' text-anchor='middle'%3E2023 年度专题%3C/text%3E%3C/svg%3E" alt="2023年度域名价值观察专题封面：深蓝数据网络与域名词">
+          <div class="play-icon"><span>▶</span></div>
+        </div>
+        <div class="body">
+          <div class="tag-row"><span class="tag">官方发布</span><span class="tag blue">行业观察</span><span class="tag amber">深度</span></div>
+          <h3>2023年度域名价值观察：数字资产如何被重新理解</h3>
+          <p class="card-excerpt">从注册量、交易趋势到品牌保护意识，我们用一期长视频梳理今年域名市场的变化脉络，并访谈多位数字资产从业者，聊聊他们眼中的价值判断与行业未来。</p>
+          <div class="card-meta">
+            <span class="author"><span class="mini-avatar" style="background:#00a37a">域</span>域名查询官方</span>
+            <span>· 12.6万次播放</span>
+            <span>· 2023-12-18</span>
+          </div>
+        </div>
+      </article>
+      <div class="focus-side">
+        <article class="card">
+          <div class="thumb">
+            <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 270'%3E%3Crect width='480' height='270' fill='%2312303f'/%3E%3Cg stroke='%233b82f6' stroke-opacity='0.4'%3E%3Cpath d='M40 220 L140 120 L240 170 L340 70 L440 110'/%3E%3C/g%3E%3Ccircle cx='140' cy='120' r='7' fill='%233b82f6'/%3E%3Ccircle cx='340' cy='70' r='7' fill='%2300e5a0'/%3E%3Ctext x='40' y='50' fill='%237cb3ff' font-family='sans-serif' font-size='18' font-weight='bold'%3E趋势曲线%3C/text%3E%3C/svg%3E" alt="域名注册趋势曲线图封面：蓝色折线与数据节点">
+            <div class="play-icon"><span>▶</span></div>
+          </div>
+          <div class="body">
+            <div class="tag-row"><span class="tag blue">实用技巧</span></div>
+            <h3>三步查询法：快速判断一个域名的历史与现状</h3>
+            <div class="card-meta" style="margin-top:8px"><span>4.2万播放</span><span>· 2023-12-15</span></div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb">
+            <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 270'%3E%3Crect width='480' height='270' fill='%23241c10'/%3E%3Cg fill='none' stroke='%23f59e0b' stroke-opacity='0.55'%3E%3Crect x='90' y='60' width='100' height='100' rx='8'/%3E%3Crect x='250' y='60' width='100' height='100' rx='8'/%3E%3Crect x='90' y='170' width='260' height='38' rx='8'/%3E%3C/g%3E%3Ctext x='140' y='118' fill='%23fbbf24' font-family='sans-serif' font-size='16' text-anchor='middle'%3E.COM%3C/text%3E%3Ctext x='300' y='118' fill='%23fbbf24' font-family='sans-serif' font-size='16' text-anchor='middle'%3E.CN%3C/text%3E%3Ctext x='220' y='195' fill='%23fbbf24' font-family='sans-serif' font-size='13' text-anchor='middle'%3E后缀对比 一图看懂%3C/text%3E%3C/svg%3E" alt="域名后缀对比图解封面：琥珀色方块与.COM与.CN字样">
+            <div class="play-icon"><span>▶</span></div>
+          </div>
+          <div class="body">
+            <div class="tag-row"><span class="tag amber">知识科普</span></div>
+            <h3>常见后缀怎么选：.com、.cn、.net 使用场景对比</h3>
+            <div class="card-meta" style="margin-top:8px"><span>3.8万播放</span><span>· 2023-12-11</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO STREAM -->
+<section id="videos">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2>热门<span>视频流</span></h2>
+        <p>来自社区创作者的真实分享，每一期都值得细看</p>
+      </div>
+      <a href="#topics" class="section-link">进入专题 →</a>
+    </div>
+    <div class="video-grid" id="videoGrid">
+
+      <article class="card video-card">
+        <div class="thumb">
+          <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 270'%3E%3Crect width='480' height='270' fill='%230a2e35'/%3E%3Cg stroke='%2300e5a0' stroke-opacity='0.3' stroke-width='2' fill='none'%3E%3Cpath d='M40 230 L140 90 L240 180 L340 60 L440 150'/%3E%3C/g%3E%3Ccircle cx='240' cy='180' r='26' fill='%2300e5a0' fill-opacity='0.2'/%3E%3Ctext x='40' y='46' fill='%239ee8d0' font-family='sans-serif' font-size='17' font-weight='bold'%3E查询实录%3C/text%3E%3C/svg%3E" alt="域名历史查询实录视频封面：绿色折线与节点曲线">
+          <div class="play-icon"><span>▶</span></div>
+        </div>
+        <div class="body">
+          <div class="tag-row"><span class="tag">日常记录</span></div>
+          <h3>我用十年时间，记录了一个域名的完整生命周期</h3>
+          <p class="card-excerpt">从注册、建站、停放到重新启用，每一步都留下了可查证的痕迹。</p>
+          <div class="card-meta"><span class="author"><span class="mini-avatar" style="background:#0a7d61">林</span>林深见域</span><span>6.1万播放</span></div>
+          <div class="card-actions">
+            <button class="act-btn" data-like><span>👍</span> <span class="num">1.2k</span></button>
+            <button class="act-btn" data-fav><span>♡</span> 收藏</button>
+            <button class="act-btn" data-share>分享</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card video-card">
+        <div class="thumb">
+          <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 270'%3E%3Crect width='480' height='270' fill='%23151b3a'/%3E%3Cg fill='%237cb3ff' fill-opacity='0.8'%3E%3Ccircle cx='120' cy='90' r='30'/%3E%3Ccircle cx='240' cy='160' r='42' fill='%2300e5a0'/%3E%3Ccircle cx='370' cy='90' r='24'/%3E%3C/g%3E%3Ctext x='40' y='240' fill='%23a8bfff' font-family='sans-serif' font-size='16'%3E品牌保护 · 案例拆解%3C/text%3E%3C/svg%3E" alt="品牌域名保护案例拆解视频封面：蓝紫色圆形节点">
+          <div class="play-icon"><span>▶</span></div>
+        </div>
+        <div class="body">
+          <div class="tag-row"><span class="tag blue">品牌故事</span></div>
+          <h3>品牌出海前，那些被忽视的域名保护细节</h3>
+          <p class="card-excerpt">七个真实案例，聊聊企业在国际化过程中如何守住品牌入口。</p>
+          <div class="card-meta"><span class="author"><span class="mini-avatar" style="background:#2f5fd6">周</span>周屿说品牌</span><span>4.7万播放</span></div>
+          <div class="card-actions">
+            <button class="act-btn" data-like><span>👍</span> <span class="num">896</span></button>
+            <button class="act-btn" data-fav><span>♡</span> 收藏</button>
+            <button class="act-btn" data-share>分享</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card video-card">
+        <div class="thumb">
+          <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 270'%3E%3Crect width='480' height='270' fill='%232a1e0c'/%3E%3Cg stroke='%23f59e0b' stroke-width='3' fill='none'%3E%3Crect x='70' y='60' width='140' height='90' rx='10'/%3E%3Crect x='250' y='110' width='160' height='100' rx='10'/%3E%3Cpath d='M120 190 L200 190 M330 150 L390 150'/%3E%3C/g%3E%3Ctext x='40' y='235' fill='%23fbbf24' font-family='sans-serif' font-size='16'%3E信息核验 · 方法%3C/text%3E%3C/svg%3E" alt="域名信息核验方法教程视频封面：琥珀色线框图形">
+          <div class="play-icon"><span>▶</span></div>
+        </div>
+        <div class="body">
+          <div class="tag-row"><span class="tag amber">教程干货</span></div>
+          <h3>域名信息核验清单：从注册人到解析记录的完整核对</h3>
+          <p class="card-excerpt">一份可以直接照着做的核验流程，适合刚入门的信息核查人员。</p>
+          <div class="card-meta"><span class="author"><span class="mini-avatar" style="background:#b4791c">陈</span>陈工的逻辑课</span><span>5.3万播放</span></div>
+          <div class="card-actions">
+            <button class="act-btn" data-like><span>👍</span> <span class="num">1.5k</span></button>
+            <button class="act-btn" data-fav><span>♡</span> 收藏</button>
+            <button class="act-btn" data-share>分享</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card video-card">
+        <div class="thumb">
+          <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 270'%3E%3Crect width='480' height='270' fill='%2317291f'/%3E%3Cg stroke='%236dbf8f' stroke-opacity='0.55' fill='none' stroke-width='2'%3E%3Cpath d='M90 60 h300 v150 h-300 z'/%3E%3Cpath d='M90 110 h300 M160 110 v100 M250 110 v100 M340 110 v100'/%3E%3C/g%3E%3Ctext x='40' y='245' fill='%2396d9b0' font-family='sans-serif' font-size='16'%3E数据整理 · 表格%3C/text%3E%3C/svg%3E" alt="域名数据整理表格视频封面：绿色网格与表格线">
+          <div class="play-icon"><span>▶</span></div>
+        </div>
+        <div class="body">
+          <div class="tag-row"><span class="tag">实用技巧</span></div>
+          <h3>用表格管理批量域名：我的信息归档方法分享</h3>
+          <p class="card-excerpt">域名一多就容易乱，这套归档模板帮你把查询记录理清楚。</p>
+          <div class="card-meta"><span class="author"><span class="mini-avatar" style="background:#2f7a4e">苏</span>苏禾的工作台</span><span>3.2万播放</span></div>
+          <div class="card-actions">
+            <button class="act-btn" data-like><span>👍</span> <span class="num">742</span></button>
+            <button class="act-btn" data-fav><span>♡</span> 收藏</button>
+            <button class="act-btn" data-share>分享</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card video-card">
+        <div class="thumb">
+          <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 270'%3E%3Crect width='480' height='270' fill='%23241827'/%3E%3Cg fill='%23c084fc' fill-opacity='0.75'%3E%3Crect x='80' y='160' width='40' height='70' rx='4'/%3E%3Crect x='150' y='120' width='40' height='110' rx='4'/%3E%3Crect x='220' y='90' width='40' height='140' rx='4'/%3E%3Crect x='290' y='140' width='40' height='90' rx='4' fill='%2300e5a0'/%3E%3Crect x='360' y='70' width='40' height='160' rx='4'/%3E%3C/g%3E%3Ctext x='40' y='48' fill='%23d8b4fe' font-family='sans-serif' font-size='16'%3E2023 数据观察%3C/text%3E%3C/svg%3E" alt="2023数据观察柱状图视频封面：紫色与绿色柱形">
+          <div class="play-icon"><span>▶</span></div>
+        </div>
+        <div class="body">
+          <div class="tag-row"><span class="tag purple">深度测评</span></div>
+          <h3>2023 数字资产趋势盘点：热度、交易与关注度</h3>
+          <p class="card-excerpt">用一组公开数据，还原过去一年里数字资产领域的关键变化。</p>
+          <div class="card-meta"><span class="author"><span class="mini-avatar" style="background:#7c3aed">孟</span>孟然看趋势</span><span>7.4万播放</span></div>
+          <div class="card-actions">
+            <button class="act-btn" data-like><span>👍</span> <span class="num">2.1k</span></button>
+            <button class="act-btn" data-fav><span>♡</span> 收藏</button>
+            <button class="act-btn" data-share>分享</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card video-card">
+        <div class="thumb">
+          <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 270'%3E%3Crect width='480' height='270' fill='%231b2a34'/%3E%3Cg stroke='%234dd8ff' fill='none' stroke-width='2' stroke-opacity='0.7'%3E%3Ccircle cx='240' cy='135' r='70'/%3E%3Ccircle cx='240' cy='135' r='110' stroke-opacity='0.35'/%3E%3C/g%3E%3Ccircle cx='240' cy='135' r='10' fill='%234dd8ff'/%3E%3Ctext x='40' y='245' fill='%2396e0f0' font-family='sans-serif' font-size='16'%3E解析原理 · 动画%3C/text%3E%3C/svg%3E" alt="域名解析原理动画视频封面：青蓝色同心圆与中心点">
+          <div class="play-icon"><span>▶</span></div>
+        </div>
+        <div class="body">
+          <div class="tag-row"><span class="tag blue">知识科普</span></div>
+          <h3>一次查询背后发生了什么？域名解析原理动画解说</h3>
+          <p class="card-excerpt">把技术流程讲成人话，三分钟理解一次查询的完整路径。</p>
+          <div class="card-meta"><span class="author"><span class="mini-avatar" style="background:#1f7a8c">何</span>何老师讲原理</span><span>6.8万播放</span></div>
+          <div class="card-actions">
+            <button class="act-btn" data-like><span>👍</span> <span class="num">1.8k</span></button>
+            <button class="act-btn" data-fav><span>♡</span> 收藏</button>
+            <button class="act-btn" data-share>分享</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card video-card">
+        <div class="thumb">
+          <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 270'%3E%3Crect width='480' height='270' fill='%23211a12'/%3E%3Cg stroke='%23d9a05b' stroke-width='2.4' fill='none'%3E%3Cpath d='M100 200 L160 80 L240 160 L320 70 L390 190'/%3E%3C/g%3E%3Cg fill='%23d9a05b'%3E%3Ccircle cx='160' cy='80' r='6'/%3E%3Ccircle cx='320' cy='70' r='6'/%3E%3C/g%3E%3Ctext x='40' y='245' fill='%23e8c69b' font-family='sans-serif' font-size='16'%3E人物访谈 · 记录%3C/text%3E%3C/svg%3E" alt="人物访谈视频封面：复古棕色调折线与节点">
+          <div class="play-icon"><span>▶</span></div>
+        </div>
+        <div class="body">
+          <div class="tag-row"><span class="tag amber">人物访谈</span></div>
+          <h3>访谈：一位数字资产从业者眼中的十年变化</h3>
+          <p class="card-excerpt">他经历了行业从无序到规范的过程，也见证了价值判断的转变。</p>
+          <div class="card-meta"><span class="author"><span class="mini-avatar" style="background:#8a5a2b">白</span>白鹿影像志</span><span>8.9万播放</span></div>
+          <div class="card-actions">
+            <button class="act-btn" data-like><span>👍</span> <span class="num">2.6k</span></button>
+            <button class="act-btn" data-fav><span>♡</span> 收藏</button>
+            <button class="act-btn" data-share>分享</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card video-card">
+        <div class="thumb">
+          <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 270'%3E%3Crect width='480' height='270' fill='%230f2a26'/%3E%3Cg fill='none' stroke='%2300c48a' stroke-width='2.2' stroke-opacity='0.7'%3E%3Crect x='80' y='70' width='320' height='120' rx='12'/%3E%3Cpath d='M80 120 h320 M150 120 v70 M240 120 v70 M330 120 v70'/%3E%3C/g%3E%3Ctext x='40' y='235' fill='%2384e3c4' font-family='sans-serif' font-size='16'%3E社区共创 · 投稿%3C/text%3E%3C/svg%3E" alt="社区共创投稿指南视频封面：绿色线框与网格">
+          <div class="play-icon"><span>▶</span></div>
+        </div>
+        <div class="body">
+          <div class="tag-row"><span class="tag">创作幕后</span></div>
+          <h3>从选题到成片：我的社区投稿创作流程全记录</h3>
+          <p class="card-excerpt">分享一套可复用的创作方法，也聊聊内容社区的协作氛围。</p>
+          <div class="card-meta"><span class="author"><span class="mini-avatar" style="background:#0f7a5f">顾</span>顾小满手记</span><span>3.6万播放</span></div>
+          <div class="card-actions">
+            <button class="act-btn" data-like><span>👍</span> <span class="num">813</span></button>
+            <button class="act-btn" data-fav><span>♡</span> 收藏</button>
+            <button class="act-btn" data-share>分享</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card video-card">
+        <div class="thumb">
+          <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 270'%3E%3Crect width='480' height='270' fill='%231a2233'/%3E%3Cg stroke='%23e06c75' stroke-width='2.6' fill='none'%3E%3Cpath d='M70 200 L160 90 L250 170 L400 60'/%3E%3C/g%3E%3Ccircle cx='400' cy='60' r='9' fill='%23e06c75'/%3E%3Ctext x='40' y='245' fill='%23f0a0a8' font-family='sans-serif' font-size='16'%3E风险提示 · 观察%3C/text%3E%3C/svg%3E" alt="域名风险提示观察视频封面：深蓝背景与红色折线">
+          <div class="play-icon"><span>▶</span></div>
+        </div>
+        <div class="body">
+          <div class="tag-row"><span class="tag purple">行业观察</span></div>
+          <h3>识别异常域名：几个值得留意的小信号</h3>
+          <p class="card-excerpt">从公开信息角度出发，分享一些日常排查时可以参考的思路。</p>
+          <div class="card-meta"><span class="author"><span class="mini-avatar" style="background:#a13a44">程</span>程禾观察室</span><span>5.9万播放</span></div>
+          <div class="card-actions">
+            <button class="act-btn" data-like><span>👍</span> <span class="num">1.4k</span></button>
+            <button class="act-btn" data-fav><span>♡</span> 收藏</button>
+            <button class="act-btn" data-share>分享</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- TOPICS -->
+<section id="topics">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2>专题<span>企划</span></h2>
+        <p>围绕数字资产与网络信息，我们持续推出系列策划</p>
+      </div>
+      <a href="#news" class="section-link">企划进度 →</a>
+    </div>
+    <div class="topic-grid">
+      <div class="topic-card">
+        <div class="topic-num">SPECIAL 01</div>
+        <h3>域名价值观察 2023</h3>
+        <p>以年度视角梳理数字资产领域的变化，包含数据盘点、案例拆解与从业者访谈。</p>
+        <div class="topic-foot"><span>已更新 12 期</span><span style="color:var(--accent)">连载中</span></div>
+      </div>
+      <div class="topic-card">
+        <div class="topic-num">SPECIAL 02</div>
+        <h3>品牌保护实战手册</h3>
+        <p>面向企业与品牌方的实用专题，从注册策略到信息核验，一步步建立保护意识。</p>
+        <div class="topic-foot"><span>已更新 8 期</span><span style="color:var(--accent2)">更新中</span></div>
+      </div>
+      <div class="topic-card">
+        <div class="topic-num">SPECIAL 03</div>
+        <h3>新手查询入门课</h3>
+        <p>为零基础用户准备的系列课程，讲清楚查询工具怎么用、信息怎么看、结果怎么记。</p>
+        <div class="topic-foot"><span>已更新 6 期</span><span style="color:var(--accent3)">已完结</span></div>
+      </div>
+      <div class="topic-card">
+        <div class="topic-num">SPECIAL 04</div>
+        <h3>社区创作者访谈录</h3>
+        <p>走近社区里的创作者，听他们讲述创作动机、内容方法与真实的生活状态。</p>
+        <div class="topic-foot"><span>已更新 9 期</span><span style="color:var(--accent)">连载中</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREATORS -->
+<section id="creators">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2>创作者<span>矩阵</span></h2>
+        <p>深耕垂直领域的内容伙伴，让专业与真实同时被看见</p>
+      </div>
+      <a href="#insights" class="section-link">查看更多 →</a>
+    </div>
+    <div class="creator-grid">
+      <div class="creator-card" data-creator="林深见域">
+        <div class="creator-avatar" style="background:linear-gradient(135deg,#00a37a,#046b52)">林</div>
+        <h3>林深见域</h3>
+        <div class="creator-field">域名观察 · 深度记录</div>
+        <p class="creator-bio">十年数字资产从业经历，擅长用长视频讲述域名背后的时间故事。</p>
+        <div class="creator-stats"><div><b>86</b>作品</div><div><b>12.4万</b>粉丝</div></div>
+      </div>
+      <div class="creator-card" data-creator="陈工的逻辑课">
+        <div class="creator-avatar" style="background:linear-gradient(135deg,#b4791c,#7a4f0d)">陈</div>
+        <h3>陈工的逻辑课</h3>
+        <div class="creator-field">教程干货 · 方法拆解</div>
+        <p class="creator-bio">偏爱把复杂流程拆成清单，帮助新手快速建立信息核验的思维习惯。</p>
+        <div class="creator-stats"><div><b>124</b>作品</div><div><b>9.8万</b>粉丝</div></div>
+      </div>
+      <div class="creator-card" data-creator="何老师讲原理">
+        <div class="creator-avatar" style="background:linear-gradient(135deg,#1f7a8c,#12505c)">何</div>
+        <h3>何老师讲原理</h3>
+        <div class="creator-field">知识科普 · 动画解说</div>
+        <p class="creator-bio">用动画把技术原理讲清楚，让普通用户也能看懂查询背后的机制。</p>
+        <div class="creator-stats"><div><b>97</b>作品</div><div><b>15.1万</b>粉丝</div></div>
+      </div>
+      <div class="creator-card" data-creator="孟然看趋势">
+        <div class="creator-avatar" style="background:linear-gradient(135deg,#7c3aed,#4c1d95)">孟</div>
+        <h3>孟然看趋势</h3>
+        <div class="creator-field">行业观察 · 数据解读</div>
+        <p class="creator-bio">关注数字资产领域的长期变化，习惯用数据说话，内容理性克制。</p>
+        <div class="creator-stats"><div><b>58</b>作品</div><div><b>7.6万</b>粉丝</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSIGHTS -->
+<section id="insights">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2>行业<span>观察与随笔</span></h2>
+        <p>比视频更长一点的文字，记录我们对这个领域的持续思考</p>
+      </div>
+      <a href="#news" class="section-link">全部文章 →</a>
+    </div>
+    <div class="insight-grid">
+      <article class="insight-card">
+        <h3>为什么“查得到”比“记得住”更重要</h3>
+        <p>信息会过期，记录会丢失，但可核验的查询路径能长期存在。这也是我们坚持做平台、做内容的原因：让每个结论都能回溯到依据，让判断建立在事实之上，而不是印象里。</p>
+        <div class="topic-foot"><span>数字资产随笔</span><span>2023-12-14</span></div>
+      </article>
+      <article class="insight-card">
+        <h3>内容社区里的“慢专业”</h3>
+        <p>在追求速度的时代，还有一类内容值得慢慢做。我们的创作者用几十期视频讲一个知识点，把细节讲透，把方法讲实。这种慢，恰恰是社区最珍贵的部分，也是品质口碑的来源。</p>
+        <div class="topic-foot"><span>社区观察</span><span>2023-12-08</span></div>
+      </article>
+      <article class="insight-card">
+        <h3>一个域名背后，常常是一个完整的决定</h3>
+        <p>注册、备案、解析、保护，这些词单独看都很技术，但连起来就是一个团队对品牌的认真程度。我们最近访谈的几位从业者，都提到了同一个词：长期主义。这也许是对数字资产最贴切的注解。</p>
+        <div class="topic-foot"><span>人物访谈手记</span><span>2023-11-29</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2>用户<span>评价</span></h2>
+        <p>来自社区成员的真实反馈，是我们持续运营的动力</p>
+      </div>
+    </div>
+    <div class="review-wrap">
+      <div class="review-card">
+        <div class="review-head">
+          <span class="review-avatar" style="background:#0a7d61">李</span>
+          <div><div class="review-name">李工 · 运维工程师</div><div class="review-stars">★★★★★</div></div>
+        </div>
+        <p class="review-body">功能界面干净，查询结果的结构很清晰，特别是历史记录那一块，我们团队核对信息时省了不少时间。希望后续能加上批量导出。</p>
+      </div>
+      <div class="review-card">
+        <div class="review-head">
+          <span class="review-avatar" style="background:#2f5fd6">王</span>
+          <div><div class="review-name">王女士 · 品牌负责人</div><div class="review-stars">★★★★★</div></div>
+        </div>
+        <p class="review-body">品牌保护专题对我们帮助很大，很多以前忽略的细节都被讲到了。内容做得很用心，能感觉到团队是真的懂这个领域。</p>
+      </div>
+      <div class="review-card">
+        <div class="review-head">
+          <span class="review-avatar" style="background:#b4791c">张</span>
+          <div><div class="review-name">张同学 · 数字媒体专业</div><div class="review-stars">★★★★☆</div></div>
+        </div>
+        <p class="review-body">原理讲解的动画视频对新手特别友好，我几乎是看完一整个系列入门课的。如果能出配套的图文笔记就更好了。</p>
+      </div>
+      <div class="review-card">
+        <div class="review-head">
+          <span class="review-avatar" style="background:#7c3aed">赵</span>
+          <div><div class="review-name">赵先生 · 独立开发者</div><div class="review-stars">★★★★★</div></div>
+        </div>
+        <p class="review-body">我经常来这边看行业观察栏目，文字有信息量，也不贩卖焦虑。作为一个技术社区，这种克制很难得，会持续关注。</p>
+      </div>
+      <div class="review-card">
+        <div class="review-head">
+          <span class="review-avatar" style="background:#a13a44">刘</span>
+          <div><div class="review-name">刘老师 · 高校讲师</div><div class="review-stars">★★★★★</div></div>
+        </div>
+        <p class="review-body">把课程里比较抽象的知识点，用视频和案例讲清楚了。我推荐给了几个学生，反馈都挺不错，内容质量确实在线。</p>
+      </div>
+      <div class="review-card">
+        <div class="review-head">
+          <span class="review-avatar" style="background:#1f7a8c">孙</span>
+          <div><div class="review-name">孙女士 · 自媒体创作者</div><div class="review-stars">★★★★☆</div></div>
+        </div>
+        <p class="review-body">投稿流程很顺畅，编辑给的建议也很专业。作为创作者，能遇到愿意认真打磨内容的平台，是一件挺幸运的事情。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section id="news">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2>企业<span>动态</span></h2>
+        <p>官方发布 · 平台更新 · 社区活动，与你同步每一次进步</p>
+      </div>
+    </div>
+    <div class="news-list">
+      <div class="news-item">
+        <div class="news-date">2023-12-20</div>
+        <div class="news-body">
+          <h3>「域名价值观察 2023」年度专题正式上线</h3>
+          <p>专题收录 12 期视频与 4 篇长文，涵盖数据盘点、案例拆解与人物访谈，欢迎社区成员参与话题讨论与投票。</p>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="news-date">2023-12-12</div>
+        <div class="news-body">
+          <h3>创作者招募计划开启报名，首批开放 100 个名额</h3>
+          <p>面向数字资产、网络信息与品牌保护方向的内容创作者，提供选题支持、制作指导与社区资源对接。</p>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="news-date">2023-12-05</div>
+        <div class="news-body">
+          <h3>社区投稿指南更新至 3.0 版本</h3>
+          <p>新增竖屏内容规范与信息核查要求，帮助创作者更高效地完成选题到发布的全流程。</p>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="news-date">2023-11-26</div>
+        <div class="news-body">
+          <h3>「品牌保护实战手册」专题完结，累计播放突破 40 万</h3>
+          <p>感谢每一位参与讨论与反馈的用户，下一季专题正在筹备中，敬请关注官方发布动态。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2>帮助<span>中心</span></h2>
+        <p>关于平台、内容与社区的常见问题解答</p>
+      </div>
+    </div>
+    <div class="faq-grid">
+      <details>
+        <summary>平台提供哪些类型的查询信息？</summary>
+        <p>平台围绕域名公开信息提供查询与解读内容，包括基础登记信息、历史记录展示方式、后缀差异说明等。所有信息均来自公开渠道，帮助用户更清晰地理解查询结果。</p>
+      </details>
+      <details>
+        <summary>如何成为社区创作者并投稿？</summary>
+        <p>点击页面中的「投稿」按钮填写基本信息即可提交申请。审核通过后，你会收到选题建议与制作规范，社区编辑也会在内容打磨阶段提供一对一建议。</p>
+      </details>
+      <details>
+        <summary>内容多久更新一次？</summary>
+        <p>视频栏目每周更新 2 至 3 期，专题企划按月推进，行业观察文章保持每周一篇的节奏。企业动态栏目会在有重要更新时第一时间发布。</p>
+      </details>
+      <details>
+        <summary>查询结果可以作为正式依据使用吗？</summary>
+        <p>平台展示的信息仅供学习与参考，不构成任何形式的正式证明文件。涉及法律、交易等正式场景时，请以相关权威机构出具的信息为准。</p>
+      </details>
+      <details>
+        <summary>我可以在社区中提出选题建议吗？</summary>
+        <p>非常欢迎。每个专题页面下方都设有互动入口，你的建议会被整理进选题池，部分建议还会在社区投票环节公开征集意见。</p>
+      </details>
+      <details>
+        <summary>平台如何处理用户反馈？</summary>
+        <p>所有反馈都会进入处理队列，一般问题会在 3 个工作日内回复。涉及内容准确性或信息安全的反馈会优先处理，并在处理完成后向反馈者同步结果。</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="cta">
+      <h2>与我们一起，把数字资产讲清楚</h2>
+      <p>无论你是想投稿分享经验、寻求内容合作，还是希望参与社区共建，都欢迎联系我们。官方团队会认真阅读每一条来信，并尽快给你回复。</p>
+      <div class="cta-actions">
+        <button class="btn btn-primary" onclick="openModal('submitModal')">立即投稿</button>
+        <button class="btn btn-ghost" onclick="openModal('contactModal')">联系我们</button>
+        <button class="btn btn-ghost" onclick="openModal('shareModal')">分享给朋友</button>
+      </div>
+      <div class="cta-info">
+        <div><b>合作邮箱</b>partner@domainquery.example</div>
+        <div><b>投稿邮箱</b>create@domainquery.example</div>
+        <div><b>社区运营</b>工作日 9:00 - 18:00</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo"><span class="logo-mark">域</span>域名查询</a>
+        <p>域名查询官方网站，深耕网络域名信息服务垂直领域，坚持原创与正版内容，以专业、高清、值得信赖的内容品质，陪伴每一位关注数字资产的用户持续成长。</p>
+      </div>
+      <div class="footer-col">
+        <h4>内容</h4>
+        <a href="#focus">焦点内容</a>
+        <a href="#videos">热门视频</a>
+        <a href="#topics">专题企划</a>
+        <a href="#insights">行业观察</a>
+      </div>
+      <div class="footer-col">
+        <h4>社区</h4>
+        <a href="#creators">创作者矩阵</a>
+        <a href="#reviews">用户评价</a>
+        <a href="#news">企业动态</a>
+        <a href="#faq">帮助中心</a>
+      </div>
+      <div class="footer-col">
+        <h4>关于</h4>
+        <a href="#hero">品牌介绍</a>
+        <a href="#contact">联系我们</a>
+        <a href="#" onclick="openModal('submitModal');return false;">投稿入口</a>
+        <a href="#" onclick="openModal('shareModal');return false;">分享平台</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2023 域名查询官方网站 · 持续运营中 · 保留所有权利</span>
+      <span>备案号：占位-2023-0000 | 内容均为原创，转载请注明出处</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<!-- Modals -->
+<div class="modal-mask" id="submitModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('submitModal')">×</button>
+    <h3>投稿入口</h3>
+    <p class="modal-sub">填写以下信息，社区编辑将在 3 个工作日内与你联系。</p>
+    <label>创作者昵称</label>
+    <input type="text" placeholder="请输入昵称">
+    <label>联系方式</label>
+    <input type="text" placeholder="邮箱或社交账号">
+    <label>选题方向</label>
+    <textarea placeholder="简单描述你的选题或内容方向"></textarea>
+    <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="closeModal('submitModal');showToast('投稿已提交，感谢你的参与！')">提交投稿</button>
+  </div>
+</div>
+
+<div class="modal-mask" id="contactModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('contactModal')">×</button>
+    <h3>联系我们</h3>
+    <p class="modal-sub">官方团队会认真阅读每一条来信。</p>
+    <label>你的称呼</label>
+    <input type="text" placeholder="请输入称呼">
+    <label>邮箱</label>
+    <input type="text" placeholder="请输入邮箱">
+    <label>留言内容</label>
+    <textarea placeholder="请描述你的问题或合作意向"></textarea>
+    <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="closeModal('contactModal');showToast('留言已发送，我们会尽快回复')">发送留言</button>
+  </div>
+</div>
+
+<div class="modal-mask" id="shareModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('shareModal')">×</button>
+    <h3>分享平台</h3>
+    <p class="modal-sub">把感兴趣的内容分享给更多朋友。</p>
+    <div class="share-row">
+      <button class="btn btn-ghost" onclick="copyLink()">复制链接</button>
+      <button class="btn btn-ghost" onclick="shareTip('微信')">微信</button>
+      <button class="btn btn-ghost" onclick="shareTip('微博')">微博</button>
+      <button class="btn btn-ghost" onclick="shareTip('QQ')">QQ</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-mask" id="authorModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('authorModal')">×</button>
+    <h3 id="authorName">创作者</h3>
+    <p class="modal-sub" id="authorField">领域</p>
+    <p style="font-size:13.5px;color:var(--text2);line-height:1.75" id="authorBio"></p>
+    <div class="author-modal-stats" id="authorStats"></div>
+    <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="closeModal('authorModal');showToast('已关注该创作者')">关注创作者</button>
+  </div>
+</div>
+
+<button id="backTop" aria-label="回到顶部">↑</button>
+
+<script>
+(function(){
+  'use strict';
+
+  // Announcement close
+  var announceClose=document.getElementById('announceClose');
+  var announceBar=document.getElementById('announceBar');
+  if(announceClose){
+    announceClose.addEventListener('click',function(){
+      announceBar.style.display='none';
+    });
+  }
+
+  // Mobile nav
+  var menuToggle=document.getElementById('menuToggle');
+  var mainNav=document.getElementById('mainNav');
+  if(menuToggle){
+    menuToggle.addEventListener('click',function(){
+      mainNav.classList.toggle('open');
+    });
+    mainNav.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click',function(){mainNav.classList.remove('open');});
+    });
+  }
+
+  // Search
+  var searchInput=document.getElementById('searchInput');
+  var searchBtn=document.getElementById('searchBtn');
+  var searchFeedback=document.getElementById('searchFeedback');
+  var searchData=['域名价值观察 2023','品牌保护实战手册','新手查询入门课','创作者访谈录','域名历史查询实录','后缀对比知识科普'];
+  function doSearch(){
+    var q=(searchInput.value||'').trim();
+    if(!q){
+      searchFeedback.innerHTML='请输入关键词，例如：<b>域名</b>、<b>品牌保护</b>、<b>查询技巧</b>';
+      searchFeedback.classList.add('show');
+      return;
+    }
+    var matches=searchData.filter(function(item){return item.indexOf(q)!==-1;});
+    if(matches.length){
+      searchFeedback.innerHTML='为你找到 '+matches.length+' 条相关内容：<b>'+matches.join('</b>、<b>')+'</b>';
+    }else{
+      searchFeedback.innerHTML='暂未找到与「'+q+'」完全匹配的内容，试试 <b>域名</b>、<b>专题</b> 或 <b>创作者</b>';
+    }
+    searchFeedback.classList.add('show');
+  }
+  if(searchBtn){
+    searchBtn.addEventListener('click',doSearch);
+    searchInput.addEventListener('keydown',function(e){if(e.key==='Enter')doSearch();});
+    document.addEventListener('click',function(e){
+      if(!e.target.closest('.search-box'))searchFeedback.classList.remove('show');
+    });
+  }
+
+  // Toast
+  var toastEl=document.getElementById('toast');
+  var toastTimer=null;
+  window.showToast=function(msg){
+    toastEl.textContent=msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer=setTimeout(function(){toastEl.classList.remove('show');},2400);
+  };
+
+  // Modals
+  window.openModal=function(id){
+    var m=document.getElementById(id);
+    if(m)m.classList.add('show');
+    document.body.style.overflow='hidden';
+  };
+  window.closeModal=function(id){
+    var m=document.getElementById(id);
+    if(m)m.classList.remove('show');
+    document.body.style.overflow='';
+  };
+  document.querySelectorAll('.modal-mask').forEach(function(mask){
+    mask.addEventListener('click',function(e){
+      if(e.target===mask){mask.classList.remove('show');document.body.style.overflow='';}
+    });
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){document.querySelectorAll('.modal-mask.show').forEach(function(m){m.classList.remove('show');});document.body.style.overflow='';}
+  });
+
+  // Copy link
+  window.copyLink=function(){
+    var url=window.location.href;
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(function(){
+        showToast('链接已复制到剪贴板');
+      }).catch(function(){
+        legacyCopy(url);
+      });
+    }else{
+      legacyCopy(url);
+    }
+  };
+  function legacyCopy(text){
+    var ta=document.createElement('textarea');
+    ta.value=text;
+    ta.style.position='fixed';
+    ta.style.opacity='0';
+    document.body.appendChild(ta);
+    ta.select();
+    try{document.execCommand('copy');showToast('链接已复制到剪贴板');}catch(err){showToast('复制失败，请手动复制');}
+    document.body.removeChild(ta);
+  }
+  window.shareTip=function(ch){
+    showToast('已生成'+ch+'分享卡片，去粘贴给朋友吧');
+    closeModal('shareModal');
+  };
+
+  // Like & favorite
+  document.querySelectorAll('[data-like]').forEach(function(btn){
+    btn.addEventListener('click',function(e){
+      e.stopPropagation();
+      btn.classList.toggle('liked');
+      var num=btn.querySelector('.num');
+      if(num){
+        var raw=num.textContent.replace(/[^\d.]/g,'');
+        var val=parseFloat(raw)||0;
+        var isK=num.textContent.indexOf('k')!==-1;
+        if(btn.classList.contains('liked')){
+          if(isK){val=(Math.round(val*10)+1)/10;num.textContent=val+'k';}
+          else{num.textContent=(val+1);}
+        }else{
+          if(isK){val=(Math.round(val*10)-1)/10;num.textContent=val+'k';}
+          else{num.textContent=Math.max(0,val-1);}
+        }
+      }
+      showToast(btn.classList.contains('liked')?'已点赞':'已取消点赞');
+    });
+  });
+  document.querySelectorAll('[data-fav]').forEach(function(btn){
+    btn.addEventListener('click',function(e){
+      e.stopPropagation();
+      btn.classList.toggle('faved');
+      var icon=btn.querySelector('span');
+      if(btn.classList.contains('faved')){
+        if(icon)icon.textContent='♥';
+        btn.childNodes[1].textContent=' 已收藏';
+        showToast('已加入收藏');
+      }else{
+        if(icon)icon.textContent='♡';
+        btn.childNodes[1].textContent=' 收藏';
+        showToast('已取消收藏');
+      }
+    });
+  });
+  document.querySelectorAll('[data-share]').forEach(function(btn){
+    btn.addEventListener('click',function(e){
+      e.stopPropagation();
+      openModal('shareModal');
+    });
+  });
+
+  // Creator modal
+  var creatorData={
+    '林深见域':{field:'域名观察 · 深度记录',bio:'十年数字资产从业经历，擅长用长视频讲述域名背后的时间故事，坚持真实记录与长期观察。',works:'86',fans:'12.4万'},
+    '陈工的逻辑课':{field:'教程干货 · 方法拆解',bio:'偏爱把复杂流程拆成清单，帮助新手快速建立信息核验的思维习惯。内容强调实操与可复用性。',works:'124',fans:'9.8万'},
+    '何老师讲原理':{field:'知识科普 · 动画解说',bio:'用动画把技术原理讲清楚，让普通用户也能看懂查询背后的机制，是社区里最受欢迎的科普创作者之一。',works:'97',fans:'15.1万'},
+    '孟然看趋势':{field:'行业观察 · 数据解读',bio:'关注数字资产领域的长期变化，习惯用数据说话，内容理性克制，深受行业用户信赖。',works:'58',fans:'7.6万'}
+  };
+  document.querySelectorAll('.creator-card').forEach(function(card){
+    card.addEventListener('click',function(){
+      var name=card.getAttribute('data-creator');
+      var d=creatorData[name];
+      if(!d)return;
+      document.getElementById('authorName').textContent=name;
+      document.getElementById('authorField').textContent=d.field;
+      document.getElementById('authorBio').textContent=d.bio;
+      document.getElementById('authorStats').innerHTML='<div><b>'+d.works+'</b><span>作品数</span></div><div><b>'+d.fans+'</b><span>粉丝数</span></div>';
+      openModal('authorModal');
+    });
+  });
+
+  // Back to top
+  var backTop=document.getElementById('backTop');
+  window.addEventListener('scroll',function(){
+    if(window.scrollY>600)backTop.classList.add('show');
+    else backTop.classList.remove('show');
+  });
+  backTop.addEventListener('click',function(){
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+
+  // Card hover depth optional (CSS handled)
+})();
+</script>
+
+</body>
+                                                                   </html>
